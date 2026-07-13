@@ -4,7 +4,7 @@
 
 | 快照日期 | Skills | 插件包 | 已启用插件 | MCP 服务 |
 | :---: | :---: | :---: | :---: | :---: |
-| 2026-07-13 | 27 | 18 | 10 | 4 |
+| 2026-07-13 | 27 | 18 | 10 | 3 |
 
 > [!NOTE]
 > 盘点时区为 Asia/Shanghai。本文只记录配置结构、工具名称和版本，不记录令牌、密钥、服务地址参数或其他敏感值。
@@ -27,7 +27,7 @@
 | --- | --- | --- |
 | 全局规范 | `~/.codex/AGENTS.md` | 指令优先级、变更安全、工具路由、安全审查和验证方式 |
 | 个人 Skills | `~/.agents/skills`、`~/.codex/skills` | 26 个通用 skill 与 1 个专项 skill |
-| 插件与 MCP | `~/.codex/plugins`、`~/.codex/config.toml` | 18 个插件包与 4 个 MCP 服务入口 |
+| 插件与 MCP | `~/.codex/plugins`、`~/.codex/config.toml` | 18 个插件包与 3 个 MCP 服务入口 |
 | 本地工具链 | 当前 shell 的 `PATH` | 搜索、代码分析、安全扫描、运行时和协作工具 |
 
 > [!IMPORTANT]
@@ -124,12 +124,11 @@
 
 ## MCP 服务
 
-`~/.codex/config.toml` 配置了 4 个 MCP 服务入口：
+`~/.codex/config.toml` 配置了 3 个 MCP 服务入口：
 
 | 服务 | 形态 | 状态/用途 |
 | --- | --- | --- |
 | `node_repl` | 本地命令 | 提供受控 Node.js REPL 与相关运行时能力。 |
-| `ardot` | 远程 URL | 远程 MCP 入口；本文不记录具体地址。 |
 | `computer-use` | 本地命令 | 已配置但显式禁用；同名插件仍处于启用状态，两者是不同配置层。 |
 | `context7` | 本地命令 | 为 Context7 文档查询提供 MCP 服务。 |
 
