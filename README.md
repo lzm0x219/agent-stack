@@ -4,7 +4,7 @@
 
 | 快照日期 | Skills | 插件包 | 已启用插件 | MCP 服务 |
 | :---: | :---: | :---: | :---: | :---: |
-| 2026-07-12 | 27 | 17 | 10 | 5 |
+| 2026-07-13 | 27 | 18 | 10 | 4 |
 
 > [!NOTE]
 > 盘点时区为 Asia/Shanghai。本文只记录配置结构、工具名称和版本，不记录令牌、密钥、服务地址参数或其他敏感值。
@@ -27,7 +27,7 @@
 | --- | --- | --- |
 | 全局规范 | `~/.codex/AGENTS.md` | 指令优先级、变更安全、工具路由、安全审查和验证方式 |
 | 个人 Skills | `~/.agents/skills`、`~/.codex/skills` | 26 个通用 skill 与 1 个专项 skill |
-| 插件与 MCP | `~/.codex/plugins`、`~/.codex/config.toml` | 17 个插件包与 5 个 MCP 服务入口 |
+| 插件与 MCP | `~/.codex/plugins`、`~/.codex/config.toml` | 18 个插件包与 4 个 MCP 服务入口 |
 | 本地工具链 | 当前 shell 的 `PATH` | 搜索、代码分析、安全扫描、运行时和协作工具 |
 
 > [!IMPORTANT]
@@ -88,13 +88,13 @@
 
 ## Codex 插件
 
-插件缓存中共有 17 个包。Codex 配置显式启用了其中 10 个，其余 7 个仅在本机缓存中存在。
+插件缓存中共有 18 个包。Codex 配置显式启用了其中 10 个，其余 8 个仅在本机缓存中存在。
 
 ### 配置中显式启用
 
 | 插件 | 版本 | 能力 |
 | --- | --- | --- |
-| `browser` | 26.707.51957 | 控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。 |
+| `browser` | 26.707.61608 | 控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。 |
 | `computer-use` | 1.0.1000387 | 通过 Computer Use 操作 macOS 桌面应用。 |
 | `context7` | 1.0.1 | 查询版本相关的库文档与代码示例。 |
 | `documents` | 26.709.11516 | 创建、编辑和验证 Word/Google Docs 文档。 |
@@ -112,6 +112,7 @@
 | 插件 | 版本 | 能力 |
 | --- | --- | --- |
 | `codex-security` | 0.1.11 | 安全扫描、攻击路径分析、验证与漏洞报告工作流。 |
+| `app-69ef18c674308191a2f952431f91ea61`（Context7） | 1.0.0 | Upstash 发布的 Context7 应用连接器缓存包。 |
 | `data-analytics` | 0.2.8-13ceeea1f599 | 产品和业务数据分析、KPI、报告与仪表盘。 |
 | `figma` | 2.0.14 | Figma 设计实现、Code Connect 与设计系统工作流。 |
 | `github` | 0.1.8-2841cf9749ae | 仓库、PR、issue、CI 与发布协作。 |
@@ -119,15 +120,14 @@
 | `openai-developers` | 1.2.3 | OpenAI API、Agents SDK 与 ChatGPT Apps 开发。 |
 | `openai-templates` | 0.1.0 | OpenAI 默认文档、演示和表格模板。 |
 
-插件来源分为 `openai-bundled`、`openai-primary-runtime`、`openai-curated-remote` 与 `context7-marketplace`。其中 Context7 是当前显式启用的第三方 marketplace 插件。
+插件来源分为 `openai-bundled`、`openai-primary-runtime`、`openai-curated-remote` 与 `context7-marketplace`。当前配置显式启用 `context7-marketplace` 中的 Context7 插件；`openai-curated-remote` 中的同名应用连接器仅存在于缓存中。
 
 ## MCP 服务
 
-`~/.codex/config.toml` 配置了 5 个 MCP 服务入口：
+`~/.codex/config.toml` 配置了 4 个 MCP 服务入口：
 
 | 服务 | 形态 | 状态/用途 |
 | --- | --- | --- |
-| `moonrepo` | 本地命令 | 已配置但显式禁用。 |
 | `node_repl` | 本地命令 | 提供受控 Node.js REPL 与相关运行时能力。 |
 | `ardot` | 远程 URL | 远程 MCP 入口；本文不记录具体地址。 |
 | `computer-use` | 本地命令 | 已配置但显式禁用；同名插件仍处于启用状态，两者是不同配置层。 |
