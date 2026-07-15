@@ -2,6 +2,8 @@
 
 个人 Agent 工程环境的能力索引与配置快照，覆盖 Skills、Codex 插件、模型上下文协议（Model Context Protocol，MCP）服务、命令行工具和全局工作规范。
 
+这是脱敏的只读快照，不是一键安装配置；公开内容可用于理解环境结构和工具选型，但不能直接重建本机环境。
+
 | 快照日期 | Skills | 插件包 | 已启用插件 | MCP 服务 |
 | :---: | :---: | :---: | :---: | :---: |
 | 2026-07-15 | 27 | 18 | 10 | 3 |
@@ -86,6 +88,10 @@
 
 来源优先取自 `~/.agents/.skill-lock.json` 中的安装记录。`hatch-pet` 的本地文件未提供上游仓库字段，因此仅记录其本地目录，避免无依据归属。
 
+### Skills 内容摘要
+
+安装内容证据记录在 [`snapshot/skills.json`](snapshot/skills.json)：26 个 lock 管理的 Skills 保存 lock 中的 `skillFolderHash`、来源标识和上游路径；本地 `hatch-pet` 保存按相对路径排序后的文件 SHA-256 树摘要。`skillFolderHash` 不代表上游 Git commit，也不能单独证明本地目录未被修改。
+
 ## Codex 插件
 
 插件缓存中共有 18 个包。Codex 配置显式启用了其中 10 个，其余 8 个仅在本机缓存中存在。
@@ -158,7 +164,9 @@
 
 ## 全局 AGENTS.md
 
-全局规范位于 `~/.codex/AGENTS.md`。展开下面的区块可查看 Markdown 格式的完整整理。
+全局规范位于 `~/.codex/AGENTS.md`。下面是截至快照日期的脱敏中文摘要，不是逐字副本；权威内容仍以本机源文件为准。
+
+源文件 SHA-256：`b8f9cfc3ee24d545d9317a77fffbe46bad7754f8ee65626bf096917451423b77`
 
 <details>
 <summary><strong>展开全局工作规范</strong></summary>
@@ -268,7 +276,9 @@ SkillSpector 的结果是决策证据，不是自动批准或拒绝。
 
 ## 更新环境快照
 
-环境变化后，运行以下只读命令重新盘点。检查输出后再更新本文：
+环境变化后，可先运行 `./scripts/check-snapshot.sh` 识别数量、Skills 内容摘要或全局规范摘要的漂移。脚本只读，使用本快照已列出的 `jq` 与系统命令，不安装或引入项目依赖。更新 README 与机器清单后再次运行，检查必须通过。
+
+以下只读命令用于人工复核完整环境；检查输出后再更新本文：
 
 ```bash
 # 个人 skills
