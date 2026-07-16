@@ -8,11 +8,14 @@ skills_snapshot="$repo_root/snapshot/skills.json"
 skills_lock="$HOME/.agents/.skill-lock.json"
 agents_skills="$HOME/.agents/skills"
 codex_skills="$HOME/.codex/skills"
-hatch_pet="$codex_skills/hatch-pet"
-playwright="$codex_skills/playwright"
 plugin_cache="$HOME/.codex/plugins/cache"
 codex_config="$HOME/.codex/config.toml"
 global_agents="$HOME/.codex/AGENTS.md"
+local_skill_names=(
+  generate-agent-stack-readme
+  hatch-pet
+  playwright
+)
 
 for command_name in awk cmp find jq mktemp shasum sort tr wc; do
   if ! command -v "$command_name" >/dev/null 2>&1; then
@@ -35,17 +38,22 @@ if ! jq -e '
   exit 1
 fi
 
-for required_path in \
+required_paths=(
   "$readme" \
   "$skills_snapshot" \
   "$skills_lock" \
   "$agents_skills" \
   "$codex_skills" \
-  "$hatch_pet" \
-  "$playwright" \
   "$plugin_cache" \
   "$codex_config" \
-  "$global_agents"; do
+  "$global_agents"
+)
+
+for skill_name in "${local_skill_names[@]}"; do
+  required_paths+=("$codex_skills/$skill_name")
+done
+
+for required_path in "${required_paths[@]}"; do
   if [ ! -e "$required_path" ]; then
     printf 'missing required path: %s\n' "$required_path" >&2
     exit 1
@@ -75,7 +83,7 @@ expected_enabled_plugins="$4"
 expected_mcp_services="$5"
 
 actual_skills="$(
-  find "$agents_skills" "$codex_skills" \
+  find -L "$agents_skills" "$codex_skills" \
     -name SKILL.md -type f ! -path "$codex_skills/.system/*" -print |
     awk -F '/' '{print $(NF - 1)}' |
     LC_ALL=C sort -u |
@@ -128,7 +136,7 @@ check_equal 'MCP services' "$expected_mcp_services" "$actual_mcp_services"
 hash_local_tree() {
   local directory="$1"
 
-  find "$directory" -type f -print |
+  find -L "$directory" -type f -print |
     LC_ALL=C sort |
     while IFS= read -r file; do
       file_hash="$(shasum -a 256 "$file" | awk '{print $1}')"
@@ -140,18 +148,29 @@ hash_local_tree() {
 }
 
 render_skills_snapshot() {
-  local hatch_hash playwright_hash
-  hatch_hash="$(hash_local_tree "$hatch_pet")"
-  playwright_hash="$(hash_local_tree "$playwright")"
+  local local_skills_json skill_directory skill_hash skill_name
+  local_skills_json="$({
+    for skill_name in "${local_skill_names[@]}"; do
+      skill_directory="$codex_skills/$skill_name"
+      skill_hash="$(hash_local_tree "$skill_directory")"
+      jq -cn \
+        --arg name "$skill_name" \
+        --arg path "~/.codex/skills/$skill_name" \
+        --arg hash "$skill_hash" \
+        '{
+          name: $name,
+          source: "local",
+          skillPath: $path,
+          contentHash: $hash,
+          hashSource: "local-tree-sha256"
+        }'
+    done
+  } | jq -s '.')"
 
-  jq --arg hatch_hash "$hatch_hash" --arg playwright_hash "$playwright_hash" '{
+  jq --argjson local_skills "$local_skills_json" '{
     schemaVersion: 1,
     lockVersion: .version,
-    generatedFrom: [
-      "~/.agents/.skill-lock.json",
-      "~/.codex/skills/hatch-pet",
-      "~/.codex/skills/playwright"
-    ],
+    generatedFrom: (["~/.agents/.skill-lock.json"] + ($local_skills | map(.skillPath))),
     hashSemantics: {
       managed: "skillFolderHash copied from the lock file; it is not an upstream commit",
       local: "SHA-256 of sorted lines containing each relative path and file SHA-256"
@@ -164,22 +183,7 @@ render_skills_snapshot() {
         contentHash: .value.skillFolderHash,
         hashSource: "skillFolderHash"
       }))
-      + [
-        {
-          name: "hatch-pet",
-          source: "local",
-          skillPath: "~/.codex/skills/hatch-pet",
-          contentHash: $hatch_hash,
-          hashSource: "local-tree-sha256"
-        },
-        {
-          name: "playwright",
-          source: "local",
-          skillPath: "~/.codex/skills/playwright",
-          contentHash: $playwright_hash,
-          hashSource: "local-tree-sha256"
-        }
-      ]
+      + $local_skills
       | sort_by(.name)
     )
   }' "$skills_lock"

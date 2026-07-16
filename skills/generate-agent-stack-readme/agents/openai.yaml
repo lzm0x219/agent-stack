@@ -1,0 +1,7 @@
+interface:
+  display_name: "生成 Agent Stack README"
+  short_description: "根据已有公开快照生成完整 README 内容与 Markdown 排版"
+  default_prompt: "使用 $generate-agent-stack-readme 根据仓库已有公开快照生成完整 README.md。"
+
+policy:
+  allow_implicit_invocation: false
