@@ -186,6 +186,45 @@
 
 这些工具的默认路由是：关系理解优先 CodeGraph（仅当仓库已有 `.codegraph/`），结构化搜索和 codemod 使用 ast-grep，普通文本与配置搜索使用 ripgrep，安全相关审查使用 Opengrep，供应链签名验证使用 Cosign，链接检查使用 Lychee，第三方 skill、插件或 MCP 安装前使用 SkillSpector。
 
+### 使用说明与适用场景
+
+下表给出常用入口，不代替具体项目的 README、锁文件或仓库指令。涉及安装、升级、签名、发布、远程写入或系统清理时，先确认任务授权和影响范围；项目依赖始终优先使用仓库已经选定的包管理器。
+
+| 工具 | 常用入口 | 适用场景 |
+| --- | --- | --- |
+| `brew` | `brew info <formula>`、`brew install <formula>` | 查询或管理 macOS 系统级 CLI；安装和升级前需明确批准，不能代替项目级依赖管理。 |
+| `mise` | `mise current`、`mise exec -- <command>` | 按仓库配置选择 Node、Python、Ruby 等运行时；仓库存在 mise 配置时优先使用锁定版本。 |
+| `codex` / `opencode` | 在目标仓库中启动对应 CLI | 进行交互式 Agent 编程、代码理解和变更；先读取仓库指令并检查工作树。 |
+| `rtk` | 用其内置支持的命令包装高输出操作 | 在缺少更专用的上下文压缩能力时压缩命令输出；不得使用 `rtk env`，也不得未经批准信任项目本地过滤器。 |
+| `ripgrep` (`rg`) | `rg '<pattern>' [path]`、`rg --files` | 快速定位文本、配置项和文件；默认优先于 `grep`、`find`。 |
+| `ast-grep` / `sg` | `sg run --pattern '<pattern>' --lang <lang>` | 按语法结构搜索代码、评估批量改写或执行 codemod；修改前先用只读搜索确认匹配范围。 |
+| `codegraph` | 在含 `.codegraph/` 的仓库中查询符号和关系 | 追踪定义、引用、调用路径和跨文件依赖；没有现成索引时不根据缓存或记忆推断结果。 |
+| `opengrep` | 按仓库或目标路径运行规则扫描 | 审查安全问题和信任边界变更；扫描结果需结合源码、配置和可复现验证确认。 |
+| `skillspector` | 在安装前审查 Skill、插件或 MCP 包 | 检查第三方扩展的权限、指令和风险；审查通过不等于自动获得安装授权。 |
+| `cosign` | `cosign verify ...`、`cosign verify-attestation ...` | 验证 OCI 镜像、制品签名和证明；签名、生成密钥或登录仓库属于写操作。 |
+| `lychee` | `lychee <path>` | 检查 Markdown、HTML、站点或文档链接；默认先检查本地链接，仅在任务需要时访问远程链接。 |
+| `jq` | `jq '<filter>' <file>` | 过滤、转换和检查 JSON；适合从结构化命令输出中提取非敏感字段。 |
+| `tree` | `tree -L <depth> <path>` | 快速查看目录结构；先限制深度并排除依赖、构建产物等大目录。 |
+| `watchman` | `watchman watch <path>`、`watchman watch-del <path>` | 持续监视文件变化或驱动增量任务；临时监视应在任务结束前停止。 |
+| `sqlite3` | `sqlite3 <database>` | 交互查询或诊断本地 SQLite 数据库；写入前备份并确认数据库不由运行中的服务独占。 |
+| `node` | `node <script>`、`node --test` | 运行 JavaScript 脚本和 Node 测试；版本由项目配置或 mise 决定。 |
+| `npm` / `pnpm` / `bun` / `corepack` | 使用锁文件对应的 `install`、`run`、`test` 命令 | 管理 JavaScript 依赖和脚本；不得混用包管理器或无故重建锁文件，`corepack` 用于激活项目声明的包管理器版本。 |
+| `java` | `java -jar <file>` 或项目构建工具命令 | 运行 JVM 应用、构建工具和 Java 项目；遵守项目指定的 JDK 版本。 |
+| `rustc` / `cargo` | `cargo check`、`cargo test`、`cargo build` | 编译、检查和测试 Rust 项目；优先用 Cargo 工作流而非直接调用 `rustc`。 |
+| `python3` / `uv` | `uv run ...`、`uv sync`、`python3 <script>` | 运行 Python 脚本、同步项目环境和执行测试；有 `uv.lock` 时优先使用 `uv`，避免污染全局环境。 |
+| `ruby` | `ruby <script>` 或项目 Bundler 命令 | 运行 Ruby 脚本和 Ruby 项目；依赖版本以项目文件为准。 |
+| `pod` | `pod install`、`pod update <pod>` | 管理 Apple 平台 CocoaPods 依赖；优先执行 `pod install`，仅在明确升级目标时使用 `pod update`。 |
+| `Xcode` / `swift` / `clang` | `xcodebuild`、`swift test`、`clang ...` | 构建、测试和诊断 Apple 平台、Swift、C/C++ 项目；使用当前 Xcode 工具链并遵守项目配置。 |
+| `ffmpeg` | `ffmpeg -i <input> ... <output>` | 转码、裁剪、抽取或检查音视频；保留输入文件，将输出写到任务范围内路径。 |
+| `fonttools` / `otftotfm` | `fonttools ...`、`otftotfm ...` | 检查、转换或生成字体相关资产；保留源字体并核对许可与输出格式。 |
+| `gzip` | `gzip -k <file>`、`gzip -dc <file.gz>` | 压缩、解压或检查 gzip 数据；使用 `-k` 可保留输入文件。 |
+| `mole` | 先使用只读检查或预览模式 | 诊断和维护 macOS 本机环境；清理属于潜在破坏性操作，执行前必须确认目标和恢复方式。 |
+| `zsh` / `starship` | `zsh`、`starship explain` | 提供交互式 shell 和提示符；用于日常命令执行与提示符诊断，不应为单次任务修改全局 shell 配置。 |
+| `git` | `git status`、`git diff`、`git log` | 检查、组织和提交版本变更；保留用户已有改动，破坏性命令需明确授权。 |
+| `gh` | `gh pr view`、`gh issue view`、`gh run view` | 只读检查 GitHub PR、Issue 和 Actions；创建、评论、合并、关闭等远程写入需明确授权。 |
+| `all-contributors` | `all-contributors check`、`all-contributors add ...` | 检查或维护贡献者清单；写入前确认贡献类型和生成文件范围。 |
+| `pinentry-mac` | 由 GPG 等工具按需调用 | 在 macOS 图形界面中安全输入口令；不应把凭据作为命令参数、日志或仓库内容传递。 |
+
 ## 全局 AGENTS.md
 
 全局规范位于 `~/.codex/AGENTS.md`。下面是截至快照日期与本机源文件逐字同步的副本；源文件变化后应同时更新本节和哈希。
