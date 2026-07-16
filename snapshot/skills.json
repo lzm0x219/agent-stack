@@ -3,7 +3,8 @@
   "lockVersion": 3,
   "generatedFrom": [
     "~/.agents/.skill-lock.json",
-    "~/.codex/skills/hatch-pet"
+    "~/.codex/skills/hatch-pet",
+    "~/.codex/skills/playwright"
   ],
   "hashSemantics": {
     "managed": "skillFolderHash copied from the lock file; it is not an upstream commit",
@@ -14,35 +15,35 @@
       "name": "ask-matt",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/ask-matt/SKILL.md",
-      "contentHash": "a8673d3dac18d59cf4b05c6ae64ebc7d82042d02",
+      "contentHash": "c7d57789b230d6f88d26ca81ab9d03bad160171f",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "code-review",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/code-review/SKILL.md",
-      "contentHash": "9df6fdac9c49f20944411ee45e1582e718d9a657",
+      "contentHash": "474a27d46efb1eff9724a29ae1edc9cd8a75d911",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "codebase-design",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/codebase-design/SKILL.md",
-      "contentHash": "c5dfc023e5ae146a4ceb9c509024f6ffe13db4a3",
+      "contentHash": "7347168e8de2de105e2e55f07ecb33d25fd56f44",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "diagnosing-bugs",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/diagnosing-bugs/SKILL.md",
-      "contentHash": "0ecacff09e31245c34727abe7cb7cff71f615a35",
+      "contentHash": "27bf00e3ccc53491e938e8b5602be39238ce68f3",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "domain-modeling",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/domain-modeling/SKILL.md",
-      "contentHash": "028a0e44b23909cbdd715aa00546d5c1c46ae4d6",
+      "contentHash": "959e63161ff78b4b1cd553b2c0e09e0c68418e5f",
       "hashSource": "skillFolderHash"
     },
     {
@@ -63,28 +64,28 @@
       "name": "grill-me",
       "source": "mattpocock/skills",
       "skillPath": "skills/productivity/grill-me/SKILL.md",
-      "contentHash": "8320e7b87f7b208f50ce165b1dd43d1e93c8e801",
+      "contentHash": "c817f6f36acd483294144694a935a76d3e3eb101",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "grill-with-docs",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/grill-with-docs/SKILL.md",
-      "contentHash": "21adba95de7d93065d9fec725ddf37f871e01d05",
+      "contentHash": "5fdcdeedf2d0c73b3ecb1da0a464dd885590f8d6",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "grilling",
       "source": "mattpocock/skills",
       "skillPath": "skills/productivity/grilling/SKILL.md",
-      "contentHash": "0ace40ac10f5c0b1534324e4e109ebfa831fb361",
+      "contentHash": "10b0db61f9b3869243db8a1a0ee84f862139b94e",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "handoff",
       "source": "mattpocock/skills",
       "skillPath": "skills/productivity/handoff/SKILL.md",
-      "contentHash": "3f7df8e717e41dfd6eacd03d47319a2e01248ffb",
+      "contentHash": "184d485ae68a2132893a94239b2b85d253e6152b",
       "hashSource": "skillFolderHash"
     },
     {
@@ -98,84 +99,91 @@
       "name": "implement",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/implement/SKILL.md",
-      "contentHash": "aa65990650368f020166bc28d6c05b5b34592c97",
+      "contentHash": "f07d230f645fc9ac390cf13a450bbff12ad791a3",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "improve-codebase-architecture",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/improve-codebase-architecture/SKILL.md",
-      "contentHash": "e5beae48471adf87c513b5cbcb0ca347467546da",
+      "contentHash": "bce229692e60dff3462e49bc5e774e83bef348e6",
       "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "playwright",
+      "source": "local",
+      "skillPath": "~/.codex/skills/playwright",
+      "contentHash": "4f48d07372f6a6b30fec2043585c0d445ab4c4799f14c94821c4786e792a321e",
+      "hashSource": "local-tree-sha256"
     },
     {
       "name": "prototype",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/prototype/SKILL.md",
-      "contentHash": "e50d76191bf197e3d947eb8c780c7009269ba589",
+      "contentHash": "dd3d782b69ccb67493fbe76b84149399da3c9fee",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "research",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/research/SKILL.md",
-      "contentHash": "06c848c1a1f3ae7afd88f040f73a8f3efee3494d",
+      "contentHash": "972a34cd8128b7952b7eb279b06715862db906a7",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "resolving-merge-conflicts",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/resolving-merge-conflicts/SKILL.md",
-      "contentHash": "b601c90446f887a94ec68e5c2301a8919f949a2c",
+      "contentHash": "6aa1ed0b40fac0ebea5c0cf6f2addf82c99b6323",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "setup-matt-pocock-skills",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
-      "contentHash": "ed1bbe6a06bb049aaa95bfe2c487bdb7a8300838",
+      "contentHash": "634cf9b010bca5701642aca736dce899822f08f7",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "tdd",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/tdd/SKILL.md",
-      "contentHash": "57e1bee887816ed2af745e5fd388f224f6e61ada",
+      "contentHash": "0a727bd358b855cbcc1c35cfff21ef31f9ffb8de",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "teach",
       "source": "mattpocock/skills",
       "skillPath": "skills/productivity/teach/SKILL.md",
-      "contentHash": "3b6a4245e2aaeacb308ba6175ab3e7f2e43b0c47",
+      "contentHash": "15f8c86d39ef834e643d092733ca899b59049067",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "to-spec",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/to-spec/SKILL.md",
-      "contentHash": "b2f449aa3da9578b08dcea74afd9adee20285586",
+      "contentHash": "bf698b96b5d8798d110d9872e32b9310728555b0",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "to-tickets",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/to-tickets/SKILL.md",
-      "contentHash": "c0bc0e58663eec76e769c1496fe124be4545a2ff",
+      "contentHash": "5467d7a37ef365ed43ebe6eb466d6e952be881b8",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "triage",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/triage/SKILL.md",
-      "contentHash": "3e7a49151929d884365035cb322de099c15b33d3",
+      "contentHash": "258364be8354f726bf4080077cd92d86d08c69eb",
       "hashSource": "skillFolderHash"
     },
     {
       "name": "wayfinder",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/wayfinder/SKILL.md",
-      "contentHash": "83a96a4454c069148d8648fd21ca62a58ac15db2",
+      "contentHash": "33ed747fb30668c0e7b61698af5268c25c0d75cb",
       "hashSource": "skillFolderHash"
     },
     {
@@ -189,7 +197,7 @@
       "name": "writing-great-skills",
       "source": "mattpocock/skills",
       "skillPath": "skills/productivity/writing-great-skills/SKILL.md",
-      "contentHash": "c84411b360fad91b8756e60fa17fd5b5761422dd",
+      "contentHash": "81d36946d48842f90358d8af54e3cdcc141f8e01",
       "hashSource": "skillFolderHash"
     },
     {

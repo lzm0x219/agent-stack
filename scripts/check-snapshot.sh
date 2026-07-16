@@ -9,6 +9,7 @@ skills_lock="$HOME/.agents/.skill-lock.json"
 agents_skills="$HOME/.agents/skills"
 codex_skills="$HOME/.codex/skills"
 hatch_pet="$codex_skills/hatch-pet"
+playwright="$codex_skills/playwright"
 plugin_cache="$HOME/.codex/plugins/cache"
 codex_config="$HOME/.codex/config.toml"
 global_agents="$HOME/.codex/AGENTS.md"
@@ -41,6 +42,7 @@ for required_path in \
   "$agents_skills" \
   "$codex_skills" \
   "$hatch_pet" \
+  "$playwright" \
   "$plugin_cache" \
   "$codex_config" \
   "$global_agents"; do
@@ -138,15 +140,17 @@ hash_local_tree() {
 }
 
 render_skills_snapshot() {
-  local hatch_hash
+  local hatch_hash playwright_hash
   hatch_hash="$(hash_local_tree "$hatch_pet")"
+  playwright_hash="$(hash_local_tree "$playwright")"
 
-  jq --arg hatch_hash "$hatch_hash" '{
+  jq --arg hatch_hash "$hatch_hash" --arg playwright_hash "$playwright_hash" '{
     schemaVersion: 1,
     lockVersion: .version,
     generatedFrom: [
       "~/.agents/.skill-lock.json",
-      "~/.codex/skills/hatch-pet"
+      "~/.codex/skills/hatch-pet",
+      "~/.codex/skills/playwright"
     ],
     hashSemantics: {
       managed: "skillFolderHash copied from the lock file; it is not an upstream commit",
@@ -160,13 +164,22 @@ render_skills_snapshot() {
         contentHash: .value.skillFolderHash,
         hashSource: "skillFolderHash"
       }))
-      + [{
-        name: "hatch-pet",
-        source: "local",
-        skillPath: "~/.codex/skills/hatch-pet",
-        contentHash: $hatch_hash,
-        hashSource: "local-tree-sha256"
-      }]
+      + [
+        {
+          name: "hatch-pet",
+          source: "local",
+          skillPath: "~/.codex/skills/hatch-pet",
+          contentHash: $hatch_hash,
+          hashSource: "local-tree-sha256"
+        },
+        {
+          name: "playwright",
+          source: "local",
+          skillPath: "~/.codex/skills/playwright",
+          contentHash: $playwright_hash,
+          hashSource: "local-tree-sha256"
+        }
+      ]
       | sort_by(.name)
     )
   }' "$skills_lock"
@@ -177,9 +190,9 @@ trap 'rm -f "$temporary_snapshot"' EXIT
 render_skills_snapshot > "$temporary_snapshot"
 
 if cmp -s "$skills_snapshot" "$temporary_snapshot"; then
-  printf '[ok] Skills manifest matches lock metadata and local hatch-pet tree\n'
+  printf '[ok] Skills manifest matches lock metadata and local skill trees\n'
 else
-  printf '[drift] Skills manifest differs from lock metadata or local hatch-pet tree\n' >&2
+  printf '[drift] Skills manifest differs from lock metadata or local skill trees\n' >&2
   failures=$((failures + 1))
 fi
 
