@@ -3,6 +3,7 @@
   "lockVersion": 3,
   "generatedFrom": [
     "~/.agents/.skill-lock.json",
+    "~/.codex/skills/generate-agent-stack-readme",
     "~/.codex/skills/hatch-pet",
     "~/.codex/skills/playwright"
   ],
@@ -59,6 +60,13 @@
       "skillPath": "skills/frontend-design/SKILL.md",
       "contentHash": "0d5b74a14bdf3ebcd64f352d06376a2ef05ed296",
       "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "generate-agent-stack-readme",
+      "source": "local",
+      "skillPath": "~/.codex/skills/generate-agent-stack-readme",
+      "contentHash": "288246aecd0b6fb6484c2e91acff43892e5ecf145fac2bbf404a8c220dcae55f",
+      "hashSource": "local-tree-sha256"
     },
     {
       "name": "grill-me",

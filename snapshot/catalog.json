@@ -1,0 +1,116 @@
+{
+  "skillGroups": [
+    {
+      "name": "工程工作流 Skills",
+      "skills": [
+        {"name": "ask-matt", "purpose": "根据当前问题选择合适的 skill 或工作流。"},
+        {"name": "code-review", "purpose": "从固定基点审查代码变更，同时检查仓库规范与需求符合度。"},
+        {"name": "codebase-design", "purpose": "用深模块、接口、接缝和适配器等统一词汇设计代码结构。"},
+        {"name": "diagnosing-bugs", "purpose": "用可复现反馈循环诊断复杂缺陷与性能回退。"},
+        {"name": "domain-modeling", "purpose": "建立领域术语、统一语言与架构决策。"},
+        {"name": "implement", "purpose": "根据规格或 tickets 实现工作，并要求持续验证和最终审查。"},
+        {"name": "improve-codebase-architecture", "purpose": "扫描架构摩擦点，产出可视化报告并讨论改进机会。"},
+        {"name": "playwright", "purpose": "通过 Playwright CLI 自动化真实浏览器，用于导航、表单、截图、数据提取和 UI 流程调试。"},
+        {"name": "prototype", "purpose": "构建一次性逻辑或 UI 原型，用运行结果回答设计问题。"},
+        {"name": "resolving-merge-conflicts", "purpose": "理解双方意图、解决 merge/rebase 冲突并完成验证。"},
+        {"name": "setup-matt-pocock-skills", "purpose": "为工程 skills 初始化 issue tracker、标签和领域文档布局。"},
+        {"name": "tdd", "purpose": "按 red → green → refactor 循环进行测试驱动开发。"}
+      ]
+    },
+    {
+      "name": "规划、研究与协作 Skills",
+      "skills": [
+        {"name": "grill-me", "purpose": "通过持续访谈把计划或设计中的决策问清楚。"},
+        {"name": "grill-with-docs", "purpose": "在访谈过程中同步沉淀 ADR 与领域词汇。"},
+        {"name": "grilling", "purpose": "提供逐项压力测试计划和设计的底层访谈流程。"},
+        {"name": "handoff", "purpose": "将当前上下文压缩成可供下一位 Agent 接手的交接文档。"},
+        {"name": "research", "purpose": "基于高可信一手资料研究问题，并把结论写入仓库。"},
+        {"name": "to-spec", "purpose": "将已有对话整理为规格，并发布到项目 issue tracker。"},
+        {"name": "to-tickets", "purpose": "把规格拆成带阻塞关系的纵向切片 tickets。"},
+        {"name": "triage", "purpose": "按状态机对 issues 和外部 PR 进行分类、核实和任务化。"},
+        {"name": "wayfinder", "purpose": "把跨多个 Agent 会话的大型工作拆成调查地图并逐项消除不确定性。"}
+      ]
+    },
+    {
+      "name": "设计、写作与学习 Skills",
+      "skills": [
+        {"name": "find-skills", "purpose": "发现可能满足需求的可安装 skills。"},
+        {"name": "frontend-design", "purpose": "指导具有明确视觉方向的前端设计，避免模板化默认风格。"},
+        {"name": "generate-agent-stack-readme", "purpose": "根据已有公开快照生成完整 README 内容与 Markdown 排版。"},
+        {"name": "teach", "purpose": "在工作区内建立持续性的课程、参考资料与学习记录。"},
+        {"name": "web-design-guidelines", "purpose": "按 Web Interface Guidelines 审查 UI、UX 与可访问性。"},
+        {"name": "writing-great-skills", "purpose": "提供编写稳定、可预测 Agent Skill 的方法与词汇。"},
+        {"name": "writing-guidelines", "purpose": "按 Writing Guidelines 审查文档的表达、语气与结构。"}
+      ]
+    },
+    {
+      "name": "专项 Skill",
+      "skills": [
+        {"name": "hatch-pet", "purpose": "创建、修复、验证和打包 Codex v2 动画宠物及其 spritesheet。"}
+      ]
+    }
+  ],
+  "plugins": [
+    {"name": "browser", "capability": "控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。"},
+    {"name": "computer-use", "capability": "通过 Computer Use 操作 macOS 桌面应用。"},
+    {"name": "context-mode", "capability": "压缩高输出命令、文件和页面内容，仅把检索或分析结果带入会话。"},
+    {"name": "context7", "capability": "查询版本相关的库文档与代码示例。"},
+    {"name": "documents", "capability": "创建、编辑和验证 Word/Google Docs 文档。"},
+    {"name": "pdf", "capability": "读取、创建、渲染并验证 PDF。"},
+    {"name": "presentations", "capability": "创建、编辑、渲染和导出演示文稿。"},
+    {"name": "sites", "capability": "构建与托管网站。"},
+    {"name": "spreadsheets", "capability": "创建、分析、可视化并导出电子表格。"},
+    {"name": "template-creator", "capability": "从文档、演示或表格创建个人制品模板 skill。"},
+    {"name": "visualize", "capability": "创建交互式图表、地图、图示、模拟器和数据探索器。"},
+    {"name": "codex-security", "capability": "安全扫描、攻击路径分析、验证与漏洞报告工作流。"},
+    {"name": "app-69ef18c674308191a2f952431f91ea61", "capability": "Upstash 发布的 Context7 应用连接器缓存包。", "display": "`app-69ef18c674308191a2f952431f91ea61`（Context7）"},
+    {"name": "data-analytics", "capability": "产品和业务数据分析、KPI、报告与仪表盘。"},
+    {"name": "figma", "capability": "Figma 设计实现、Code Connect 与设计系统工作流。"},
+    {"name": "github", "capability": "仓库、PR、issue、CI 与发布协作。"},
+    {"name": "hugging-face", "capability": "模型、数据集、Spaces、训练任务和研究工作流。"},
+    {"name": "openai-developers", "capability": "OpenAI API、Agents SDK 与 ChatGPT Apps 开发。"},
+    {"name": "openai-templates", "capability": "OpenAI 默认文档、演示和表格模板。"}
+  ],
+  "mcpPurposes": {
+    "codegraph": "为已有 `.codegraph/` 索引的仓库提供符号关系与调用路径查询。",
+    "node_repl": "提供受控 Node.js REPL 与相关运行时能力。",
+    "computer-use": "同名插件仍处于启用状态，两者是不同配置层。",
+    "context7": "为 Context7 文档查询提供 MCP 服务。"
+  },
+  "toolGroups": [
+    {"category": "工具链管理", "display": "`Homebrew` (`brew`)", "commands": ["brew"]},
+    {"category": "工具链管理", "display": "`mise`", "commands": ["mise"]},
+    {"category": "Agent 编程 CLI", "display": "`codex`", "commands": ["codex"]},
+    {"category": "Agent 编程 CLI", "display": "`opencode`", "commands": ["opencode"]},
+    {"category": "Agent 命令代理", "display": "`rtk`", "commands": ["rtk"]},
+    {"category": "文本搜索", "display": "`ripgrep` (`rg`)", "commands": ["rg"]},
+    {"category": "AST 搜索/改写", "display": "`ast-grep` / `sg`", "commands": ["ast-grep"]},
+    {"category": "代码关系理解", "display": "`codegraph`", "commands": ["codegraph"]},
+    {"category": "安全扫描", "display": "`opengrep`", "commands": ["opengrep"]},
+    {"category": "Skill/MCP 审查", "display": "`skillspector`", "commands": ["skillspector"]},
+    {"category": "供应链签名验证", "display": "`cosign`", "commands": ["cosign"]},
+    {"category": "链接检查", "display": "`lychee`", "commands": ["lychee"]},
+    {"category": "JSON 处理", "display": "`jq`", "commands": ["jq"]},
+    {"category": "文件树查看", "display": "`tree`", "commands": ["tree"]},
+    {"category": "文件监视", "display": "`watchman`", "commands": ["watchman"]},
+    {"category": "数据库 CLI", "display": "`sqlite3`", "commands": ["sqlite3"]},
+    {"category": "JavaScript 运行时", "display": "`node`", "commands": ["node"]},
+    {"category": "JS 运行时与包管理", "display": "`npm` / `pnpm` / `bun` / `corepack`", "commands": ["npm", "pnpm", "bun", "corepack"]},
+    {"category": "Java", "display": "`java`", "commands": ["java"]},
+    {"category": "Rust", "display": "`rustc` / `cargo`", "commands": ["rustc", "cargo"]},
+    {"category": "Python", "display": "`python3`", "commands": ["python3"]},
+    {"category": "Python 项目工具", "display": "`uv`", "commands": ["uv"]},
+    {"category": "Ruby", "display": "`ruby`", "commands": ["ruby"]},
+    {"category": "Apple 平台依赖管理", "display": "`CocoaPods` (`pod`)", "commands": ["pod"]},
+    {"category": "Apple 开发工具链", "display": "`Xcode` / `swift` / `clang`", "commands": ["xcodebuild", "swift", "clang"]},
+    {"category": "媒体处理", "display": "`ffmpeg`", "commands": ["ffmpeg"]},
+    {"category": "字体处理", "display": "`fonttools` / `LCDF TypeTools` (`otftotfm`)", "commands": ["fonttools", "otftotfm"]},
+    {"category": "压缩工具", "display": "`gzip`", "commands": ["gzip"]},
+    {"category": "macOS 维护", "display": "`mole`", "commands": ["mole"]},
+    {"category": "Shell", "display": "`zsh` / `starship`", "commands": ["zsh", "starship"]},
+    {"category": "版本控制", "display": "`git`", "commands": ["git"]},
+    {"category": "GitHub CLI", "display": "`gh`", "commands": ["gh"]},
+    {"category": "协作者清单", "display": "`all-contributors`", "commands": ["all-contributors"]},
+    {"category": "凭据输入", "display": "`pinentry-mac`", "commands": ["pinentry-mac"]}
+  ]
+}
