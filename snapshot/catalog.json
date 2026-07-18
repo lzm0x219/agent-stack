@@ -1,4 +1,22 @@
 {
+  "agentRuntimes": [
+    {
+      "name": "Codex",
+      "command": "codex",
+      "skillsRoots": ["~/.agents/skills", "~/.codex/skills"],
+      "skillsSnapshot": "snapshot/skills.json"
+    },
+    {
+      "name": "OpenCode",
+      "command": "opencode"
+    },
+    {
+      "name": "Hermes Agent",
+      "command": "hermes",
+      "skillsRoots": ["~/.hermes/skills"],
+      "skillsSnapshot": "snapshot/hermes-skills.json"
+    }
+  ],
   "skillGroups": [
     {
       "name": "工程工作流 Skills",
@@ -36,7 +54,7 @@
       "skills": [
         {"name": "find-skills", "purpose": "发现可能满足需求的可安装 skills。"},
         {"name": "frontend-design", "purpose": "指导具有明确视觉方向的前端设计，避免模板化默认风格。"},
-        {"name": "generate-agent-stack-readme", "purpose": "根据已有公开快照生成完整 README 内容与 Markdown 排版。"},
+        {"name": "generate-agent-stack-readme", "purpose": "盘点 Codex、Hermes 等实时环境，更新结构化快照并生成和验证 README。"},
         {"name": "teach", "purpose": "在工作区内建立持续性的课程、参考资料与学习记录。"},
         {"name": "web-design-guidelines", "purpose": "按 Web Interface Guidelines 审查 UI、UX 与可访问性。"},
         {"name": "writing-great-skills", "purpose": "提供编写稳定、可预测 Agent Skill 的方法与词汇。"},
@@ -82,6 +100,7 @@
     {"category": "工具链管理", "display": "`mise`", "commands": ["mise"]},
     {"category": "Agent 编程 CLI", "display": "`codex`", "commands": ["codex"]},
     {"category": "Agent 编程 CLI", "display": "`opencode`", "commands": ["opencode"]},
+    {"category": "Agent 编程 CLI", "display": "`hermes`", "commands": ["hermes"]},
     {"category": "Agent 命令代理", "display": "`rtk`", "commands": ["rtk"]},
     {"category": "文本搜索", "display": "`ripgrep` (`rg`)", "commands": ["rg"]},
     {"category": "AST 搜索/改写", "display": "`ast-grep` / `sg`", "commands": ["ast-grep"]},

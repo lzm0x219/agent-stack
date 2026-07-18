@@ -18,6 +18,7 @@
 ## 统计口径
 
 - **个人 Skills**：统计 `~/.agents/skills` 与 `~/.codex/skills` 下的个人 `SKILL.md`；排除 `~/.codex/skills/.system` 和插件包内的 Skills，重复安装不得重复计数。
+- **Hermes Skills**：单独统计 `~/.hermes/skills` 下的活动 `SKILL.md`；排除 `~/.hermes/hermes-agent` 源码树、`optional-skills`、`node_modules`、`venv` 与插件源码中的 bundled Skills，不与 Codex 个人 Skills 合并。
 - **插件包**：按 `~/.codex/plugins/cache` 中实际存在的 `.codex-plugin/plugin.json` 清单统计，并记录精确版本。
 - **已启用插件**：仅统计 `~/.codex/config.toml` 中明确配置且 `enabled = true` 的插件。
 - **MCP 服务**：统计顶层 `[mcp_servers.<name>]` 配置；不要把 `.env` 等子表重复计数，并单独说明禁用状态。
@@ -37,6 +38,7 @@
 - README 中的数量与只读盘点结果一致。
 - `./scripts/check-snapshot.sh` 通过。
 - 插件和 CLI 版本来自当前清单或可信可执行文件。
+- Hermes CLI 版本、活动 Skills 数量、名称、路径和哈希与 `~/.hermes/skills` 一致。
 - 插件与 MCP 的状态符合配置，而不是仅依据缓存存在。
 - `git diff --check` 通过，差异中不含敏感值或无关改动。
 - 无法执行的检查或仍不确定的状态已明确报告，不以推测补全。

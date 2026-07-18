@@ -1,43 +1,55 @@
 # Agent Stack
 
-个人 Agent 工程环境的能力索引与配置快照，覆盖 Skills、Codex 插件、模型上下文协议（Model Context Protocol，MCP）服务、命令行工具和全局工作规范。
+个人 Agent 工程环境的能力索引与配置快照，覆盖 Codex、Hermes 等 Agent 运行时、活动 Skills、Codex 插件、模型上下文协议（Model Context Protocol，MCP）服务、命令行工具和全局工作规范。
 
 这是脱敏的只读快照，不是一键安装配置；公开内容可用于理解环境结构和工具选型，但不能直接重建本机环境。
 
-| 快照日期 | Skills | 插件包 | 已启用插件 | MCP 服务 |
-| :---: | :---: | :---: | :---: | :---: |
-| 2026-07-17 | 29 | 19 | 11 | 3 |
+| 快照日期 | Codex 个人 Skills | Hermes Skills | 插件包 | 已启用插件 | MCP 服务 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 2026-07-19 | 29 | 81 | 19 | 11 | 3 |
 
 > [!NOTE]
 > 盘点时区为 Asia/Shanghai。本文只记录配置结构、工具名称和版本，不记录令牌、密钥、服务地址参数或其他敏感值。
 
 ## 导航
 
-- [环境结构](#环境结构)
-- [Skills](#skills)
+- [状态边界与环境结构](#状态边界与环境结构)
+- [Codex 个人 Skills](#codex-个人-skills)
+- [Hermes Agent](#hermes-agent)
 - [Codex 插件](#codex-插件)
 - [MCP 服务](#mcp-服务)
 - [本地工具链](#本地工具链)
 - [全局 AGENTS.md](#全局-agentsmd)
 - [更新环境快照](#更新环境快照)
 
-## 环境结构
+## 状态边界与环境结构
 
-当前环境分为四层，每层对应一种配置职责：
+当前环境分为五层，每层对应一种配置职责：
 
 | 层级 | 位置 | 内容 |
 | --- | --- | --- |
 | 全局规范 | `~/.codex/AGENTS.md` | 指令优先级、变更安全、工具路由、安全审查和验证方式 |
-| 个人 Skills | `~/.agents/skills`、`~/.codex/skills` | 28 个通用 skill 与 1 个专项 skill |
+| Codex 个人 Skills | `~/.agents/skills`、`~/.codex/skills` | 28 个通用 skill 与 1 个专项 skill |
+| Hermes Agent | `~/.local/bin/hermes`、`~/.hermes/skills` | Hermes Agent v0.18.2 与 81 个活动 Skills |
 | 插件与 MCP | `~/.codex/plugins`、`~/.codex/config.toml` | 19 个插件包与 3 个 MCP 服务入口 |
 | 本地工具链 | 当前 shell 的 `PATH` | 搜索、代码分析、安全扫描、运行时和协作工具 |
 
-> [!IMPORTANT]
-> “已缓存”不等于“已启用”，“已配置”也不等于工具已暴露给当前会话。
+本文严格区分以下四种状态：
 
-## Skills
+| 状态 | 判定依据 |
+| --- | --- |
+| 本机已缓存 | 插件包存在于 `~/.codex/plugins/cache`。 |
+| 配置中已登记 | 插件或 MCP 服务存在于 `~/.codex/config.toml` 的对应顶层配置。 |
+| 明确启用 | 插件配置明确设置 `enabled = true`；显式禁用的 MCP 服务单独标注。 |
+| 当前会话已暴露 | 对应工具在当前 Codex 会话中可用；该状态不由缓存或配置单独决定。 |
 
-本机共有 29 个个人 skill。以下清单按使用场景分组，不包含 Codex 系统 skills，也不重复计算插件内部的 skills。
+“已缓存”不等于“已启用”，“配置中已登记”也不等于工具已暴露给当前会话。
+
+动态数量、Agent 版本、插件版本与状态、MCP 状态、工具版本和全局规范哈希记录在 [`snapshot/environment.json`](snapshot/environment.json)；Codex 个人 Skills 来源与内容摘要记录在 [`snapshot/skills.json`](snapshot/skills.json)，Hermes 活动 Skills 清单记录在 [`snapshot/hermes-skills.json`](snapshot/hermes-skills.json)，稳定分组与用途记录在 [`snapshot/catalog.json`](snapshot/catalog.json)。
+
+## Codex 个人 Skills
+
+本机共有 29 个 Codex 个人 skill。以下清单按使用场景分组，不包含 Codex 系统 skills、插件内部 skills 或 Hermes 活动 skills，也不重复计算跨目录安装。
 
 ### 工程工作流 Skills
 
@@ -76,7 +88,7 @@
 | --- | --- | --- |
 | `find-skills` | [`vercel-labs/skills`](https://github.com/vercel-labs/skills) | 发现可能满足需求的可安装 skills。 |
 | `frontend-design` | [`anthropics/skills`](https://github.com/anthropics/skills) | 指导具有明确视觉方向的前端设计，避免模板化默认风格。 |
-| `generate-agent-stack-readme` | 本地目录 `~/.codex/skills/generate-agent-stack-readme` | 根据已有公开快照生成完整 README 内容与 Markdown 排版。 |
+| `generate-agent-stack-readme` | 本地目录 `~/.codex/skills/generate-agent-stack-readme` | 盘点 Codex、Hermes 等实时环境，更新结构化快照并生成和验证 README。 |
 | `teach` | [`mattpocock/skills`](https://github.com/mattpocock/skills) | 在工作区内建立持续性的课程、参考资料与学习记录。 |
 | `web-design-guidelines` | [`vercel-labs/agent-skills`](https://github.com/vercel-labs/agent-skills) | 按 Web Interface Guidelines 审查 UI、UX 与可访问性。 |
 | `writing-great-skills` | [`mattpocock/skills`](https://github.com/mattpocock/skills) | 提供编写稳定、可预测 Agent Skill 的方法与词汇。 |
@@ -94,6 +106,45 @@
 
 安装内容证据记录在 [`snapshot/skills.json`](snapshot/skills.json)：26 个 lock 管理的 Skills 保存 lock 中的 `skillFolderHash`、来源标识和上游路径；本地 `generate-agent-stack-readme`、`hatch-pet` 与 `playwright` 保存按相对路径排序后的文件 SHA-256 树摘要。`skillFolderHash` 不代表上游 Git commit，也不能单独证明本地目录未被修改。
 
+## Hermes Agent
+
+当前 shell 解析到的 `hermes` 为 Hermes Agent v0.18.2。Hermes 的运行时和活动 Skills 与 Codex 个人 Skills 分开统计：
+
+| 字段 | 值 |
+| --- | --- |
+| 命令 | `hermes` |
+| 版本 | 0.18.2 |
+| 构建 | 2026.7.7.2 |
+| 上游修订 | `5402cb55` |
+| 安装方式 | git |
+| 安装目录 | `~/.hermes/hermes-agent` |
+| 活动 Skills 根目录 | `~/.hermes/skills` |
+| 活动 Skills | 81 |
+
+只统计 `~/.hermes/skills` 中的活动 `SKILL.md`。Hermes 安装源码树、`optional-skills`、`node_modules`、`venv` 和插件源码内的 bundled Skills 不计入，避免与活动目录重复。
+
+### Hermes Skills 分类
+
+| 分类 | 数量 |
+| --- | ---: |
+| `apple` | 4 |
+| `autonomous-ai-agents` | 4 |
+| `creative` | 17 |
+| `data-science` | 1 |
+| `email` | 1 |
+| `github` | 6 |
+| `media` | 4 |
+| `mlops` | 7 |
+| `note-taking` | 1 |
+| `productivity` | 10 |
+| `research` | 7 |
+| `root`（根级） | 6 |
+| `smart-home` | 1 |
+| `social-media` | 1 |
+| `software-development` | 11 |
+
+`hallmark` 已作为根级活动 Skill 纳入统计。81 个 Skill 的名称、分类、脱敏路径和文件树 SHA-256 记录在 [`snapshot/hermes-skills.json`](snapshot/hermes-skills.json)。
+
 ## Codex 插件
 
 插件缓存中共有 19 个包。Codex 配置显式启用了其中 11 个，其余 8 个仅在本机缓存中存在。
@@ -102,17 +153,17 @@
 
 | 插件 | 版本 | 能力 |
 | --- | --- | --- |
-| `browser` | 26.707.91948 | 控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。 |
-| `computer-use` | 1.0.1000387 | 通过 Computer Use 操作 macOS 桌面应用。 |
+| `browser` | 26.715.31925 | 控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。 |
+| `computer-use` | 1.0.1000451 | 通过 Computer Use 操作 macOS 桌面应用。 |
 | `context-mode` | 1.0.169 | 压缩高输出命令、文件和页面内容，仅把检索或分析结果带入会话。 |
 | `context7` | 1.0.1 | 查询版本相关的库文档与代码示例。 |
 | `documents` | 26.715.12143 | 创建、编辑和验证 Word/Google Docs 文档。 |
 | `pdf` | 26.715.12143 | 读取、创建、渲染并验证 PDF。 |
 | `presentations` | 26.715.12143 | 创建、编辑、渲染和导出演示文稿。 |
-| `sites` | 0.1.27 | 构建与托管网站。 |
+| `sites` | 0.1.30 | 构建与托管网站。 |
 | `spreadsheets` | 26.715.12143 | 创建、分析、可视化并导出电子表格。 |
 | `template-creator` | 26.715.12143 | 从文档、演示或表格创建个人制品模板 skill。 |
-| `visualize` | 1.0.11 | 创建交互式图表、地图、图示、模拟器和数据探索器。 |
+| `visualize` | 1.0.12 | 创建交互式图表、地图、图示、模拟器和数据探索器。 |
 
 ### 本机缓存的其他插件
 
@@ -145,21 +196,22 @@
 
 ## 本地工具链
 
-以下版本来自当前登录 shell 中实际解析到的可执行文件及其版本输出。只记录当前生效的 CLI；桌面应用、字体、没有独立命令的 shell 插件，以及 mise 中未激活的旧版本不计入本表。
+以下版本来自当前登录 shell 中实际解析到的可执行文件及其版本输出，并同步记录在 [`snapshot/environment.json`](snapshot/environment.json)。只记录当前生效的 CLI；桌面应用、字体、没有独立命令的 shell 插件，以及 mise 中未激活的旧版本不计入本表。
 
 | 类别 | 工具 | 版本/说明 |
 | --- | --- | --- |
-| 工具链管理 | `Homebrew` (`brew`) | 6.0.11-28-gf9e050f |
+| 工具链管理 | `Homebrew` (`brew`) | 6.0.11-85-gd402d0c |
 | 工具链管理 | `mise` | 2026.7.7 |
 | Agent 编程 CLI | `codex` | 0.144.5 |
-| Agent 编程 CLI | `opencode` | 1.18.2 |
+| Agent 编程 CLI | `opencode` | 1.18.3 |
+| Agent 编程 CLI | `hermes` | 0.18.2 |
 | Agent 命令代理 | `rtk` | 0.43.0 |
 | 文本搜索 | `ripgrep` (`rg`) | 15.2.0 |
 | AST 搜索/改写 | `ast-grep` / `sg` | 0.44.1 |
 | 代码关系理解 | `codegraph` | 1.4.1 |
 | 安全扫描 | `opengrep` | 无法读取（退出码 1） |
 | Skill/MCP 审查 | `skillspector` | 2.3.11 |
-| 供应链签名验证 | `cosign` | 3.1.1 |
+| 供应链签名验证 | `cosign` | 3.1.2 |
 | 链接检查 | `lychee` | 0.24.2 |
 | JSON 处理 | `jq` | 1.7.1-apple |
 | 文件树查看 | `tree` | 2.3.2 |
@@ -175,7 +227,7 @@
 | Apple 平台依赖管理 | `CocoaPods` (`pod`) | 1.17.0 |
 | Apple 开发工具链 | `Xcode` / `swift` / `clang` | 26.6 / 6.3.3 / 21.0.0 |
 | 媒体处理 | `ffmpeg` | 8.1.2 |
-| 字体处理 | `fonttools` / `LCDF TypeTools` (`otftotfm`) | 4.63.0 / 2.110 |
+| 字体处理 | `fonttools` / `LCDF TypeTools` (`otftotfm`) | 无法读取（退出码 1） / 2.110 |
 | 压缩工具 | `gzip` | 1.14 |
 | macOS 维护 | `mole` | 1.46.0 |
 | Shell | `zsh` / `starship` | 5.9.2 / 1.26.0 |
@@ -194,7 +246,7 @@
 | --- | --- | --- |
 | `brew` | `brew info <formula>`、`brew install <formula>` | 查询或管理 macOS 系统级 CLI；安装和升级前需明确批准，不能代替项目级依赖管理。 |
 | `mise` | `mise current`、`mise exec -- <command>` | 按仓库配置选择 Node、Python、Ruby 等运行时；仓库存在 mise 配置时优先使用锁定版本。 |
-| `codex` / `opencode` | 在目标仓库中启动对应 CLI | 进行交互式 Agent 编程、代码理解和变更；先读取仓库指令并检查工作树。 |
+| `codex` / `opencode` / `hermes` | 在目标仓库中启动对应 CLI | 进行交互式 Agent 编程、代码理解和变更；先读取仓库指令并检查工作树。 |
 | `rtk` | 用其内置支持的命令包装高输出操作 | 在缺少更专用的上下文压缩能力时压缩命令输出；不得使用 `rtk env`，也不得未经批准信任项目本地过滤器。 |
 | `ripgrep` (`rg`) | `rg '<pattern>' [path]`、`rg --files` | 快速定位文本、配置项和文件；默认优先于 `grep`、`find`。 |
 | `ast-grep` / `sg` | `sg run --pattern '<pattern>' --lang <lang>` | 按语法结构搜索代码、评估批量改写或执行 codemod；修改前先用只读搜索确认匹配范围。 |
@@ -226,6 +278,15 @@
 | `pinentry-mac` | 由 GPG 等工具按需调用 | 在 macOS 图形界面中安全输入口令；不应把凭据作为命令参数、日志或仓库内容传递。 |
 
 ## 全局 AGENTS.md
+
+### 规则摘要
+
+- 输出先给结论，再给必要证据、变更、验证、风险和用户操作。
+- 修改前检查工作树并保护无关变更；破坏性、不可逆、外部写入、安装或更新操作需要明确授权。
+- 专用能力优先，工具和依赖遵循仓库现有配置、锁文件与安全边界。
+- 使用源码、配置、版本和可复现测试验证结论；无法执行的检查必须明确报告。
+
+### 完整副本与来源哈希
 
 全局规范位于 `~/.codex/AGENTS.md`。下面是截至快照日期与本机源文件逐字同步的副本；源文件变化后应同时更新本节和哈希。
 
@@ -278,13 +339,17 @@
 
 ## 更新环境快照
 
-环境变化后，必须先运行 `./scripts/check-snapshot.sh` 识别数量、Skills 内容摘要或全局规范摘要的漂移。脚本只读，使用本快照已列出的 `jq` 与系统命令，不安装或引入项目依赖。
+环境变化后，必须先运行 `./scripts/check-snapshot.sh` 识别数量、动态环境清单、Skills 内容摘要或全局规范摘要的漂移。脚本只读，使用本快照已列出的 `jq` 与系统命令，不安装或引入项目依赖。
 
 以下只读命令用于人工复核完整环境；检查输出后再更新本文与 `snapshot/`：
 
 ```bash
 # 个人 skills
 find ~/.agents/skills ~/.codex/skills -name SKILL.md -type f
+
+# Hermes Agent 与活动 skills
+hermes --version
+find ~/.hermes/skills -name SKILL.md -type f
 
 # 插件包与版本
 find ~/.codex/plugins/cache -path '*/.codex-plugin/plugin.json' -type f
@@ -293,14 +358,14 @@ find ~/.codex/plugins/cache -path '*/.codex-plugin/plugin.json' -type f
 rg '^\[mcp_servers\.|^\[plugins\.' ~/.codex/config.toml
 
 # 关键 CLI 的位置
-command -v brew mise codex opencode rtk rg ast-grep codegraph opengrep skillspector cosign lychee jq tree watchman sqlite3 node npm pnpm bun corepack java rustc cargo python3 uv ruby pod xcodebuild swift clang ffmpeg fonttools otftotfm gzip mole zsh starship git gh all-contributors pinentry-mac
+command -v brew mise codex opencode hermes rtk rg ast-grep codegraph opengrep skillspector cosign lychee jq tree watchman sqlite3 node npm pnpm bun corepack java rustc cargo python3 uv ruby pod xcodebuild swift clang ffmpeg fonttools otftotfm gzip mole zsh starship git gh all-contributors pinentry-mac
 
 # 版本管理器与全局包清单（用于排除未激活旧版本和无 CLI 的库）
 mise ls
 npm ls -g --depth=0
 ```
 
-完成全部盘点后才能更新快照日期。更新后再次运行 `./scripts/check-snapshot.sh`，检查必须通过。继续遵守两条原则：不要把缓存存在误写成已启用；不要将 `config.toml` 中的凭据、URL 参数或环境变量值复制进 README。
+完成全部盘点后才能更新快照日期。更新后再次运行 `./scripts/check-snapshot.sh`，检查必须通过。继续遵守三条原则：不要把缓存存在误写成已启用；不要把 Hermes bundled/optional Skills 误写成活动 Skills；不要将 `config.toml` 中的凭据、URL 参数或环境变量值复制进 README。
 
 当结构化快照已经完成维护，仅需生成或调整 README 内容与排版时，显式调用仓库内的 Skill：
 
@@ -308,4 +373,4 @@ npm ls -g --depth=0
 $generate-agent-stack-readme
 ```
 
-Skill 根据仓库规范、现有 README、结构化快照和 [`snapshot/catalog.json`](snapshot/catalog.json) 生成完整 Markdown 文档。它不盘点实时环境、不更新快照、不执行仓库程序，也不创建或运行 Shell、Python 辅助程序。
+Skill 先按仓库统计口径安全盘点实时环境，读取本机配置中的非敏感状态字段并更新结构化快照，再生成和验证完整 README。它不会安装、升级、删除或启用 Skill、插件、MCP 服务、依赖或本地工具。
