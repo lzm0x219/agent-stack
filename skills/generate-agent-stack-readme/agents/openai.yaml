@@ -1,7 +1,7 @@
 interface:
-  display_name: "生成 Agent Stack README"
-  short_description: "根据已有公开快照生成完整 README 内容与 Markdown 排版"
-  default_prompt: "使用 $generate-agent-stack-readme 根据仓库已有公开快照生成完整 README.md。"
+  display_name: "刷新 Agent Stack 快照与 README"
+  short_description: "盘点 Codex、Hermes 等 Agent 环境并同步快照与 README"
+  default_prompt: "使用 $generate-agent-stack-readme 盘点 Codex、Hermes 等当前 Agent 环境，更新 snapshot/，并重新生成和验证 README.md。"
 
 policy:
   allow_implicit_invocation: false

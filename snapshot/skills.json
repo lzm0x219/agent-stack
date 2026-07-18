@@ -65,7 +65,7 @@
       "name": "generate-agent-stack-readme",
       "source": "local",
       "skillPath": "~/.codex/skills/generate-agent-stack-readme",
-      "contentHash": "288246aecd0b6fb6484c2e91acff43892e5ecf145fac2bbf404a8c220dcae55f",
+      "contentHash": "f5a2144f6cd2d1bdf39cef6ac9890aec08e8f728d69260281eff4613de9ee43e",
       "hashSource": "local-tree-sha256"
     },
     {
