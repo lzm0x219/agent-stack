@@ -3,15 +3,27 @@
   "lockVersion": 3,
   "generatedFrom": [
     "~/.agents/.skill-lock.json",
+    "~/.agents/skills/dsa-design",
     "~/.codex/skills/generate-agent-stack-readme",
     "~/.codex/skills/hatch-pet",
-    "~/.codex/skills/playwright"
+    "~/.agents/skills/rust-skills",
+    "~/.codex/skills/skillopt-sleep",
+    "~/.codex/skills/playwright",
+    "~/.agents/skills/typescript-advanced-types",
+    "~/.agents/skills/typescript-pro"
   ],
   "hashSemantics": {
     "managed": "skillFolderHash copied from the lock file; it is not an upstream commit",
     "local": "SHA-256 of sorted lines containing each relative path and file SHA-256"
   },
   "skills": [
+    {
+      "name": "archify",
+      "source": "tt-a1i/archify",
+      "skillPath": "archify/SKILL.md",
+      "contentHash": "c9bec419e02cd907413e74359b14101669a9484d",
+      "hashSource": "skillFolderHash"
+    },
     {
       "name": "ask-matt",
       "source": "mattpocock/skills",
@@ -48,10 +60,17 @@
       "hashSource": "skillFolderHash"
     },
     {
+      "name": "dsa-design",
+      "source": "local",
+      "skillPath": "~/.agents/skills/dsa-design",
+      "contentHash": "7c25a22360aeacd304d532ddd1a34155491b53c56bba5305664528ed4695ceea",
+      "hashSource": "local-tree-sha256"
+    },
+    {
       "name": "find-skills",
       "source": "vercel-labs/skills",
       "skillPath": "skills/find-skills/SKILL.md",
-      "contentHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "contentHash": "76a98a285cb0434f3d39e1a873823556330e398b",
       "hashSource": "skillFolderHash"
     },
     {
@@ -104,6 +123,20 @@
       "hashSource": "local-tree-sha256"
     },
     {
+      "name": "humanizer",
+      "source": "blader/humanizer",
+      "skillPath": "SKILL.md",
+      "contentHash": "523374dee72d67c7b2b5f858ea0094ffda49c3ac",
+      "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "humanizer-zh",
+      "source": "op7418/Humanizer-zh",
+      "skillPath": "SKILL.md",
+      "contentHash": "91f3d394db8419c20d67ebe22a96cf8fee0a404b",
+      "hashSource": "skillFolderHash"
+    },
+    {
       "name": "implement",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/implement/SKILL.md",
@@ -118,11 +151,25 @@
       "hashSource": "skillFolderHash"
     },
     {
+      "name": "napi-rs",
+      "source": "lzm0x219/skills",
+      "skillPath": "skills/framework/napi-rs/SKILL.md",
+      "contentHash": "a0fb80b7a7736fba5ef5ed50486bb63af3c28936",
+      "hashSource": "skillFolderHash"
+    },
+    {
       "name": "playwright",
       "source": "local",
       "skillPath": "~/.codex/skills/playwright",
       "contentHash": "4f48d07372f6a6b30fec2043585c0d445ab4c4799f14c94821c4786e792a321e",
       "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "pnpm",
+      "source": "antfu/skills",
+      "skillPath": "skills/pnpm/SKILL.md",
+      "contentHash": "4be8fd8b101fbcba93f2fbc432802034b294c790",
+      "hashSource": "skillFolderHash"
     },
     {
       "name": "prototype",
@@ -146,11 +193,25 @@
       "hashSource": "skillFolderHash"
     },
     {
+      "name": "rust-skills",
+      "source": "local",
+      "skillPath": "~/.agents/skills/rust-skills",
+      "contentHash": "231072fcce58351404ee696b50435102dde390a8a57aa2757f2ea0d9fa12e409",
+      "hashSource": "local-tree-sha256"
+    },
+    {
       "name": "setup-matt-pocock-skills",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
       "contentHash": "634cf9b010bca5701642aca736dce899822f08f7",
       "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "skillopt-sleep",
+      "source": "local",
+      "skillPath": "~/.codex/skills/skillopt-sleep",
+      "contentHash": "6933eff9cc06f4abce5410a7f5ee8a879446fa8c0e1f7f0a522f4b0d858bc392",
+      "hashSource": "local-tree-sha256"
     },
     {
       "name": "tdd",
@@ -185,6 +246,48 @@
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/triage/SKILL.md",
       "contentHash": "258364be8354f726bf4080077cd92d86d08c69eb",
+      "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "tsdown",
+      "source": "antfu/skills",
+      "skillPath": "skills/tsdown/SKILL.md",
+      "contentHash": "d2deb9ea5fee2fcbdecbc7e450e5facbfa870f8c",
+      "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "turborepo",
+      "source": "antfu/skills",
+      "skillPath": "skills/turborepo/SKILL.md",
+      "contentHash": "7a52e4526bc1faa18b03a96ccac57ce4934905ac",
+      "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "typescript-advanced-types",
+      "source": "local",
+      "skillPath": "~/.agents/skills/typescript-advanced-types",
+      "contentHash": "37816ca8876e6f12e48ff31adef96e3fd24a9f778e10e505b19cb42feb9c8c4e",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "typescript-pro",
+      "source": "local",
+      "skillPath": "~/.agents/skills/typescript-pro",
+      "contentHash": "29ae840ef2a96fd0d5f398bc292b257e6de14e224cfd6f6b95292ce8e49dd7b9",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "vite",
+      "source": "antfu/skills",
+      "skillPath": "skills/vite/SKILL.md",
+      "contentHash": "3c0dc60ce4ffc34fca02aaa7eb21130ae48c8dff",
+      "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "vitest",
+      "source": "antfu/skills",
+      "skillPath": "skills/vitest/SKILL.md",
+      "contentHash": "6e59e3b95305499c21fc401b3dbddedbb8ead8a6",
       "hashSource": "skillFolderHash"
     },
     {

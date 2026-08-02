@@ -16,10 +16,37 @@ plugin_cache="$HOME/.codex/plugins/cache"
 codex_config="$HOME/.codex/config.toml"
 global_agents="$HOME/.codex/AGENTS.md"
 local_skill_names=(
+  dsa-design
   generate-agent-stack-readme
   hatch-pet
+  rust-skills
+  skillopt-sleep
   playwright
+  typescript-advanced-types
+  typescript-pro
 )
+
+local_skill_directory() {
+  local skill_name="$1"
+  if [ -d "$codex_skills/$skill_name" ]; then
+    printf '%s\n' "$codex_skills/$skill_name"
+  elif [ -d "$agents_skills/$skill_name" ]; then
+    printf '%s\n' "$agents_skills/$skill_name"
+  else
+    printf 'missing local skill directory: %s\n' "$skill_name" >&2
+    return 1
+  fi
+}
+
+local_skill_display_path() {
+  local directory
+  directory="$(local_skill_directory "$1")"
+  if [ "${directory#"$codex_skills"/}" != "$directory" ]; then
+    printf '~/.codex/skills/%s\n' "$1"
+  else
+    printf '~/.agents/skills/%s\n' "$1"
+  fi
+}
 
 for command_name in awk cmp find hermes jq mktemp shasum sort tr wc; do
   if ! command -v "$command_name" >/dev/null 2>&1; then
@@ -58,7 +85,7 @@ required_paths=(
 )
 
 for skill_name in "${local_skill_names[@]}"; do
-  required_paths+=("$codex_skills/$skill_name")
+  required_paths+=("$(local_skill_directory "$skill_name")")
 done
 
 for required_path in "${required_paths[@]}"; do
@@ -287,11 +314,11 @@ render_skills_snapshot() {
   local local_skills_json skill_directory skill_hash skill_name
   local_skills_json="$({
     for skill_name in "${local_skill_names[@]}"; do
-      skill_directory="$codex_skills/$skill_name"
+      skill_directory="$(local_skill_directory "$skill_name")"
       skill_hash="$(hash_local_tree "$skill_directory")"
       jq -cn \
         --arg name "$skill_name" \
-        --arg path "~/.codex/skills/$skill_name" \
+        --arg path "$(local_skill_display_path "$skill_name")" \
         --arg hash "$skill_hash" \
         '{
           name: $name,
@@ -379,7 +406,7 @@ render_hermes_skills_snapshot() {
             hashSource: "local-tree-sha256"
           }'
       done |
-      jq -s 'sort_by(.category, .name)'
+      jq -s 'sort_by(.category, .name) | unique_by(.name)'
   )"
 
   jq -n \
@@ -401,7 +428,7 @@ render_hermes_skills_snapshot() {
         installMethod: $install_method,
         skillsRoot: "~/.hermes/skills"
       },
-      hashSemantics: "SHA-256 of sorted lines containing each relative path and file SHA-256",
+      hashSemantics: "同名 Skill 按名称去重；SHA-256 of sorted lines containing each relative path and file SHA-256",
       skills: $skills
     }'
 }

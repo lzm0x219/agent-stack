@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "snapshotDate": "2026-07-19",
+  "snapshotDate": "2026-08-02",
   "timezone": "Asia/Shanghai",
   "counts": {
-    "codexPersonalSkills": 29,
-    "hermesSkills": 81,
-    "pluginPackages": 19,
-    "enabledPlugins": 11,
-    "mcpServices": 3
+    "codexPersonalSkills": 43,
+    "hermesSkills": 104,
+    "pluginPackages": 21,
+    "enabledPlugins": 12,
+    "mcpServices": 7
   },
   "hermesAgent": {
     "command": "hermes",
-    "version": "0.18.2",
-    "build": "2026.7.7.2",
-    "upstreamRevision": "5402cb55",
+    "version": "0.19.1",
+    "build": "2026.7.30",
+    "upstreamRevision": "e9d52d2b",
     "installDirectory": "~/.hermes/hermes-agent",
     "installMethod": "git",
     "skillsRoot": "~/.hermes/skills",
@@ -30,7 +30,15 @@
     },
     {
       "name": "browser",
-      "version": "26.715.31925",
+      "version": "26.727.51351",
+      "source": "openai-bundled",
+      "cached": true,
+      "configured": true,
+      "enabled": true
+    },
+    {
+      "name": "chrome",
+      "version": "26.727.51351",
       "source": "openai-bundled",
       "cached": true,
       "configured": true,
@@ -38,7 +46,7 @@
     },
     {
       "name": "codex-security",
-      "version": "0.1.11",
+      "version": "0.1.15",
       "source": "openai-curated-remote",
       "cached": true,
       "configured": false,
@@ -46,7 +54,7 @@
     },
     {
       "name": "computer-use",
-      "version": "1.0.1000451",
+      "version": "1.0.1000550",
       "source": "openai-bundled",
       "cached": true,
       "configured": true,
@@ -78,15 +86,23 @@
     },
     {
       "name": "documents",
-      "version": "26.715.12143",
+      "version": "26.801.11242",
       "source": "openai-primary-runtime",
       "cached": true,
       "configured": true,
       "enabled": true
     },
     {
+      "name": "expo",
+      "version": "1.0.2",
+      "source": "openai-curated-remote",
+      "cached": true,
+      "configured": false,
+      "enabled": false
+    },
+    {
       "name": "figma",
-      "version": "2.0.15",
+      "version": "2.0.16",
       "source": "openai-curated-remote",
       "cached": true,
       "configured": false,
@@ -118,7 +134,7 @@
     },
     {
       "name": "openai-templates",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "source": "openai-curated-remote",
       "cached": true,
       "configured": false,
@@ -126,7 +142,7 @@
     },
     {
       "name": "pdf",
-      "version": "26.715.12143",
+      "version": "26.801.11242",
       "source": "openai-primary-runtime",
       "cached": true,
       "configured": true,
@@ -134,7 +150,7 @@
     },
     {
       "name": "presentations",
-      "version": "26.715.12143",
+      "version": "26.801.11242",
       "source": "openai-primary-runtime",
       "cached": true,
       "configured": true,
@@ -142,7 +158,7 @@
     },
     {
       "name": "sites",
-      "version": "0.1.30",
+      "version": "0.1.33",
       "source": "openai-bundled",
       "cached": true,
       "configured": true,
@@ -150,7 +166,7 @@
     },
     {
       "name": "spreadsheets",
-      "version": "26.715.12143",
+      "version": "26.801.11242",
       "source": "openai-primary-runtime",
       "cached": true,
       "configured": true,
@@ -158,7 +174,7 @@
     },
     {
       "name": "template-creator",
-      "version": "26.715.12143",
+      "version": "26.801.11242",
       "source": "openai-primary-runtime",
       "cached": true,
       "configured": true,
@@ -166,7 +182,7 @@
     },
     {
       "name": "visualize",
-      "version": "1.0.12",
+      "version": "1.0.16",
       "source": "openai-bundled",
       "cached": true,
       "configured": true,
@@ -174,6 +190,12 @@
     }
   ],
   "mcpServers": [
+    {
+      "name": "astro-docs",
+      "configured": true,
+      "enabled": null,
+      "purpose": "用途待补充。"
+    },
     {
       "name": "codegraph",
       "configured": true,
@@ -191,37 +213,59 @@
       "configured": true,
       "enabled": null,
       "purpose": "提供受控 Node.js REPL 与相关运行时能力。"
+    },
+    {
+      "name": "openaiDeveloperDocs",
+      "configured": true,
+      "enabled": null,
+      "purpose": "用途待补充。"
+    },
+    {
+      "name": "pencil",
+      "configured": true,
+      "enabled": null,
+      "purpose": "用途待补充。"
+    },
+    {
+      "name": "serena",
+      "configured": true,
+      "enabled": null,
+      "purpose": "用途待补充。"
     }
   ],
+  "globalAgents": {
+    "source": "~/.codex/AGENTS.md",
+    "sha256": "0ef6f85900b784c6b127f46342a9de9e7cab7b23260962d1bbbe0c29a9ca7db8"
+  },
   "tools": [
     {
       "command": "brew",
-      "version": "6.0.11-85-gd402d0c",
+      "version": "6.0.14-20-g2b7c468",
       "status": "ok"
     },
     {
       "command": "mise",
-      "version": "2026.7.7",
+      "version": "2026.7.18",
       "status": "ok"
     },
     {
       "command": "codex",
-      "version": "0.144.5",
+      "version": "0.146.0",
       "status": "ok"
     },
     {
       "command": "opencode",
-      "version": "1.18.3",
+      "version": "1.18.10",
       "status": "ok"
     },
     {
       "command": "hermes",
-      "version": "0.18.2",
+      "version": "0.19.1",
       "status": "ok"
     },
     {
       "command": "rtk",
-      "version": "0.43.0",
+      "version": "0.44.1",
       "status": "ok"
     },
     {
@@ -231,29 +275,24 @@
     },
     {
       "command": "ast-grep",
-      "version": "0.44.1",
+      "version": "0.45.0",
       "status": "ok"
     },
     {
       "command": "codegraph",
-      "version": "1.4.1",
+      "version": "1.5.0",
       "status": "ok"
     },
     {
       "command": "opengrep",
-      "version": null,
-      "status": "version-read-failed",
-      "exitCode": 1
-    },
-    {
-      "command": "skillspector",
-      "version": "2.3.11",
+      "version": "1.25.0",
       "status": "ok"
     },
     {
       "command": "cosign",
-      "version": "3.1.2",
-      "status": "ok"
+      "version": null,
+      "status": "version-read-failed",
+      "exitCode": 1
     },
     {
       "command": "lychee",
@@ -272,7 +311,7 @@
     },
     {
       "command": "watchman",
-      "version": "2026.07.13.00",
+      "version": "2026.07.27.00",
       "status": "ok"
     },
     {
@@ -282,12 +321,12 @@
     },
     {
       "command": "node",
-      "version": "24.18.0",
+      "version": "24.18.1",
       "status": "ok"
     },
     {
       "command": "npm",
-      "version": "11.16.0",
+      "version": "12.0.2",
       "status": "ok"
     },
     {
@@ -307,17 +346,17 @@
     },
     {
       "command": "java",
-      "version": "OpenJDK 17.0.19 LTS",
+      "version": "17.0.19",
       "status": "ok"
     },
     {
       "command": "rustc",
-      "version": "1.97.0",
+      "version": "1.97.1",
       "status": "ok"
     },
     {
       "command": "cargo",
-      "version": "1.97.0",
+      "version": "1.97.1",
       "status": "ok"
     },
     {
@@ -327,7 +366,7 @@
     },
     {
       "command": "uv",
-      "version": "0.11.29",
+      "version": "0.12.0",
       "status": "ok"
     },
     {
@@ -342,8 +381,9 @@
     },
     {
       "command": "xcodebuild",
-      "version": "26.6",
-      "status": "ok"
+      "version": null,
+      "status": "version-read-failed",
+      "exitCode": 64
     },
     {
       "command": "swift",
@@ -357,8 +397,9 @@
     },
     {
       "command": "ffmpeg",
-      "version": "8.1.2",
-      "status": "ok"
+      "version": null,
+      "status": "version-read-failed",
+      "exitCode": 8
     },
     {
       "command": "fonttools",
@@ -378,8 +419,9 @@
     },
     {
       "command": "mole",
-      "version": "1.46.0",
-      "status": "ok"
+      "version": null,
+      "status": "version-read-failed",
+      "exitCode": 0
     },
     {
       "command": "zsh",
@@ -398,7 +440,7 @@
     },
     {
       "command": "gh",
-      "version": "2.96.0",
+      "version": "2.97.0",
       "status": "ok"
     },
     {
@@ -411,9 +453,5 @@
       "version": "1.3.1.1",
       "status": "ok"
     }
-  ],
-  "globalAgents": {
-    "source": "~/.codex/AGENTS.md",
-    "sha256": "6ef8c578f74692779a5ea5cc974e7d926ecf79cc34fefb595e4ee25ff1304bf8"
-  }
+  ]
 }

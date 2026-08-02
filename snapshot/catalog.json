@@ -66,6 +66,25 @@
       "skills": [
         {"name": "hatch-pet", "purpose": "创建、修复、验证和打包 Codex v2 动画宠物及其 spritesheet。"}
       ]
+    },
+    {
+      "name": "其他已安装 Skills",
+      "skills": [
+        {"name": "archify", "purpose": "已安装，公开用途待补充。"},
+        {"name": "dsa-design", "purpose": "已安装，公开用途待补充。"},
+        {"name": "humanizer", "purpose": "已安装，公开用途待补充。"},
+        {"name": "humanizer-zh", "purpose": "已安装，公开用途待补充。"},
+        {"name": "napi-rs", "purpose": "已安装，公开用途待补充。"},
+        {"name": "pnpm", "purpose": "已安装，公开用途待补充。"},
+        {"name": "rust-skills", "purpose": "已安装，公开用途待补充。"},
+        {"name": "skillopt-sleep", "purpose": "已安装，公开用途待补充。"},
+        {"name": "tsdown", "purpose": "已安装，公开用途待补充。"},
+        {"name": "turborepo", "purpose": "已安装，公开用途待补充。"},
+        {"name": "typescript-advanced-types", "purpose": "已安装，公开用途待补充。"},
+        {"name": "typescript-pro", "purpose": "已安装，公开用途待补充。"},
+        {"name": "vite", "purpose": "已安装，公开用途待补充。"},
+        {"name": "vitest", "purpose": "已安装，公开用途待补充。"}
+      ]
     }
   ],
   "plugins": [
@@ -87,13 +106,19 @@
     {"name": "github", "capability": "仓库、PR、issue、CI 与发布协作。"},
     {"name": "hugging-face", "capability": "模型、数据集、Spaces、训练任务和研究工作流。"},
     {"name": "openai-developers", "capability": "OpenAI API、Agents SDK 与 ChatGPT Apps 开发。"},
-    {"name": "openai-templates", "capability": "OpenAI 默认文档、演示和表格模板。"}
+    {"name": "openai-templates", "capability": "OpenAI 默认文档、演示和表格模板。"},
+    {"name": "chrome", "capability": "用途待补充。"},
+    {"name": "expo", "capability": "用途待补充。"}
   ],
   "mcpPurposes": {
     "codegraph": "为已有 `.codegraph/` 索引的仓库提供符号关系与调用路径查询。",
     "node_repl": "提供受控 Node.js REPL 与相关运行时能力。",
     "computer-use": "同名插件仍处于启用状态，两者是不同配置层。",
-    "context7": "为 Context7 文档查询提供 MCP 服务。"
+    "context7": "为 Context7 文档查询提供 MCP 服务。",
+    "astro-docs": "用途待补充。",
+    "openaiDeveloperDocs": "用途待补充。",
+    "pencil": "用途待补充。",
+    "serena": "用途待补充。"
   },
   "toolGroups": [
     {"category": "工具链管理", "display": "`Homebrew` (`brew`)", "commands": ["brew"]},
@@ -106,7 +131,6 @@
     {"category": "AST 搜索/改写", "display": "`ast-grep` / `sg`", "commands": ["ast-grep"]},
     {"category": "代码关系理解", "display": "`codegraph`", "commands": ["codegraph"]},
     {"category": "安全扫描", "display": "`opengrep`", "commands": ["opengrep"]},
-    {"category": "Skill/MCP 审查", "display": "`skillspector`", "commands": ["skillspector"]},
     {"category": "供应链签名验证", "display": "`cosign`", "commands": ["cosign"]},
     {"category": "链接检查", "display": "`lychee`", "commands": ["lychee"]},
     {"category": "JSON 处理", "display": "`jq`", "commands": ["jq"]},
