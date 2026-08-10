@@ -5,12 +5,20 @@
     "~/.agents/.skill-lock.json",
     "~/.agents/skills/dsa-design",
     "~/.codex/skills/generate-agent-stack-readme",
+    "~/.codex/skills/git-guardrails-claude-code",
     "~/.codex/skills/hatch-pet",
-    "~/.agents/skills/rust-skills",
-    "~/.codex/skills/skillopt-sleep",
+    "~/.codex/skills/migrate-to-shoehorn",
     "~/.codex/skills/playwright",
+    "~/.agents/skills/rust-skills",
+    "~/.codex/skills/scaffold-exercises",
+    "~/.codex/skills/setup-pre-commit",
+    "~/.codex/skills/skillopt-sleep",
+    "~/.codex/skills/to-questionnaire",
     "~/.agents/skills/typescript-advanced-types",
-    "~/.agents/skills/typescript-pro"
+    "~/.agents/skills/typescript-pro",
+    "~/.codex/skills/wait-what",
+    "~/.codex/skills/wizard",
+    "~/.codex/skills/writing-for-agents"
   ],
   "hashSemantics": {
     "managed": "skillFolderHash copied from the lock file; it is not an upstream commit",
@@ -84,7 +92,14 @@
       "name": "generate-agent-stack-readme",
       "source": "local",
       "skillPath": "~/.codex/skills/generate-agent-stack-readme",
-      "contentHash": "f5a2144f6cd2d1bdf39cef6ac9890aec08e8f728d69260281eff4613de9ee43e",
+      "contentHash": "e21f477952e4e83ea69ddbe9b95e64aa0bc42c03aa5583bd2ae18a59efffb7d3",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "git-guardrails-claude-code",
+      "source": "local",
+      "skillPath": "~/.codex/skills/git-guardrails-claude-code",
+      "contentHash": "aa428bdcacca34bfa425ed704b5f7d6c5f737e32393800bd0adf46dad4b8a443",
       "hashSource": "local-tree-sha256"
     },
     {
@@ -119,7 +134,7 @@
       "name": "hatch-pet",
       "source": "local",
       "skillPath": "~/.codex/skills/hatch-pet",
-      "contentHash": "1e3b4efeb82cc6fff36895f877c34a8f6d17d593da3d939a265336e0c9eda59c",
+      "contentHash": "118eddb9961fc8076c1b83f31fc2790e38146dd23f06be1ecbfd9c0c051ebb42",
       "hashSource": "local-tree-sha256"
     },
     {
@@ -151,6 +166,13 @@
       "hashSource": "skillFolderHash"
     },
     {
+      "name": "migrate-to-shoehorn",
+      "source": "local",
+      "skillPath": "~/.codex/skills/migrate-to-shoehorn",
+      "contentHash": "d40ae3a5edc959109f5c8c1d1826bf6277f469ac64d8df43fe751a03ba0ddc57",
+      "hashSource": "local-tree-sha256"
+    },
+    {
       "name": "napi-rs",
       "source": "lzm0x219/skills",
       "skillPath": "skills/framework/napi-rs/SKILL.md",
@@ -161,7 +183,7 @@
       "name": "playwright",
       "source": "local",
       "skillPath": "~/.codex/skills/playwright",
-      "contentHash": "4f48d07372f6a6b30fec2043585c0d445ab4c4799f14c94821c4786e792a321e",
+      "contentHash": "1d5556db4c07cfb34133e623ba64c5e9d54e2c5c4aaae1d13f4a1bc8aac5b9fe",
       "hashSource": "local-tree-sha256"
     },
     {
@@ -196,7 +218,14 @@
       "name": "rust-skills",
       "source": "local",
       "skillPath": "~/.agents/skills/rust-skills",
-      "contentHash": "231072fcce58351404ee696b50435102dde390a8a57aa2757f2ea0d9fa12e409",
+      "contentHash": "9c77e30ff4d18842f678f51283ca7c2281c560cc175832ac97d7454810c6bc4d",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "scaffold-exercises",
+      "source": "local",
+      "skillPath": "~/.codex/skills/scaffold-exercises",
+      "contentHash": "d87fe795f7a40520f5c9d798fd85ab203bd9f3b5fa76d0925be05a6a7b42c630",
       "hashSource": "local-tree-sha256"
     },
     {
@@ -205,6 +234,13 @@
       "skillPath": "skills/engineering/setup-matt-pocock-skills/SKILL.md",
       "contentHash": "634cf9b010bca5701642aca736dce899822f08f7",
       "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "setup-pre-commit",
+      "source": "local",
+      "skillPath": "~/.codex/skills/setup-pre-commit",
+      "contentHash": "188bda1d564e72f6340c8a6b506b0571ca04910d393022a0fea6416607a9aef7",
+      "hashSource": "local-tree-sha256"
     },
     {
       "name": "skillopt-sleep",
@@ -226,6 +262,13 @@
       "skillPath": "skills/productivity/teach/SKILL.md",
       "contentHash": "15f8c86d39ef834e643d092733ca899b59049067",
       "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "to-questionnaire",
+      "source": "local",
+      "skillPath": "~/.codex/skills/to-questionnaire",
+      "contentHash": "eced8882f7e787e51bb5c7e3aea0a69267a40e3cfebc305dae7ca7febcab486a",
+      "hashSource": "local-tree-sha256"
     },
     {
       "name": "to-spec",
@@ -291,6 +334,13 @@
       "hashSource": "skillFolderHash"
     },
     {
+      "name": "wait-what",
+      "source": "local",
+      "skillPath": "~/.codex/skills/wait-what",
+      "contentHash": "26f04b765fb61117ea2a99a4dd776f52b1a9f978efdd8269b951b240ab49a72e",
+      "hashSource": "local-tree-sha256"
+    },
+    {
       "name": "wayfinder",
       "source": "mattpocock/skills",
       "skillPath": "skills/engineering/wayfinder/SKILL.md",
@@ -303,6 +353,20 @@
       "skillPath": "skills/web-design-guidelines/SKILL.md",
       "contentHash": "3116f3e62dbd02b44a598b1aa690d2a8938e8f89",
       "hashSource": "skillFolderHash"
+    },
+    {
+      "name": "wizard",
+      "source": "local",
+      "skillPath": "~/.codex/skills/wizard",
+      "contentHash": "0beb26a7ffd341802c315d25b806495e671e6da7dc446c06e2ba46ae93d1b1b7",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "writing-for-agents",
+      "source": "local",
+      "skillPath": "~/.codex/skills/writing-for-agents",
+      "contentHash": "410041d0ae07289cb8f552493a93af1bca757821ebbbb9f05353c4e1357aacd0",
+      "hashSource": "local-tree-sha256"
     },
     {
       "name": "writing-great-skills",
