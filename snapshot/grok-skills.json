@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": [
+    "grok --version",
+    "~/.grok/skills"
+  ],
+  "runtime": {
+    "command": "grok",
+    "version": "1.0.0",
+    "revision": "3cd0d0cbcebe",
+    "installDirectory": "~/.grok",
+    "installMethod": "user-local symlink",
+    "skillsRoot": "~/.grok/skills"
+  },
+  "hashSemantics": "同名 Skill 按名称去重；SHA-256 of sorted lines containing each relative path and file SHA-256",
+  "skills": [
+    {
+      "name": "archify",
+      "category": "root",
+      "skillPath": "~/.grok/skills/archify/SKILL.md",
+      "contentHash": "22a8d3b33c3ab1bfbae2477d157826b3de5251f7f2c0d856b2b66679d60c4cf9",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "find-skills",
+      "category": "root",
+      "skillPath": "~/.grok/skills/find-skills/SKILL.md",
+      "contentHash": "4f4ed5e34b9a9bb47098110ea2c7f0cb66334b2017bad9cbfdcb073a807b30c9",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "napi-rs",
+      "category": "root",
+      "skillPath": "~/.grok/skills/napi-rs/SKILL.md",
+      "contentHash": "7e51fd396f5d2b6b103b32b0545ca1020aeda1440d3dc15449fe361daf0ed865",
+      "hashSource": "local-tree-sha256"
+    }
+  ]
+}

@@ -11,10 +11,10 @@
       "command": "opencode"
     },
     {
-      "name": "Hermes Agent",
-      "command": "hermes",
-      "skillsRoots": ["~/.hermes/skills"],
-      "skillsSnapshot": "snapshot/hermes-skills.json"
+      "name": "Grok CLI",
+      "command": "grok",
+      "skillsRoots": ["~/.grok/skills"],
+      "skillsSnapshot": "snapshot/grok-skills.json"
     }
   ],
   "skillGroups": [
@@ -54,7 +54,7 @@
       "skills": [
         {"name": "find-skills", "purpose": "发现可能满足需求的可安装 skills。"},
         {"name": "frontend-design", "purpose": "指导具有明确视觉方向的前端设计，避免模板化默认风格。"},
-        {"name": "generate-agent-stack-readme", "purpose": "盘点 Codex、Hermes 等实时环境，更新结构化快照并生成和验证 README。"},
+        {"name": "generate-agent-stack-readme", "purpose": "盘点 Codex、Grok 等实时环境，更新结构化快照并生成和验证 README。"},
         {"name": "teach", "purpose": "在工作区内建立持续性的课程、参考资料与学习记录。"},
         {"name": "web-design-guidelines", "purpose": "按 Web Interface Guidelines 审查 UI、UX 与可访问性。"},
         {"name": "writing-great-skills", "purpose": "提供编写稳定、可预测 Agent Skill 的方法与词汇。"},
@@ -72,26 +72,36 @@
       "skills": [
         {"name": "archify", "purpose": "已安装，公开用途待补充。"},
         {"name": "dsa-design", "purpose": "已安装，公开用途待补充。"},
+        {"name": "git-guardrails-claude-code", "purpose": "已安装，公开用途待补充。"},
         {"name": "humanizer", "purpose": "已安装，公开用途待补充。"},
         {"name": "humanizer-zh", "purpose": "已安装，公开用途待补充。"},
+        {"name": "migrate-to-shoehorn", "purpose": "已安装，公开用途待补充。"},
         {"name": "napi-rs", "purpose": "已安装，公开用途待补充。"},
         {"name": "pnpm", "purpose": "已安装，公开用途待补充。"},
         {"name": "rust-skills", "purpose": "已安装，公开用途待补充。"},
+        {"name": "scaffold-exercises", "purpose": "已安装，公开用途待补充。"},
+        {"name": "setup-pre-commit", "purpose": "已安装，公开用途待补充。"},
         {"name": "skillopt-sleep", "purpose": "已安装，公开用途待补充。"},
+        {"name": "to-questionnaire", "purpose": "已安装，公开用途待补充。"},
         {"name": "tsdown", "purpose": "已安装，公开用途待补充。"},
         {"name": "turborepo", "purpose": "已安装，公开用途待补充。"},
         {"name": "typescript-advanced-types", "purpose": "已安装，公开用途待补充。"},
         {"name": "typescript-pro", "purpose": "已安装，公开用途待补充。"},
         {"name": "vite", "purpose": "已安装，公开用途待补充。"},
-        {"name": "vitest", "purpose": "已安装，公开用途待补充。"}
+        {"name": "vitest", "purpose": "已安装，公开用途待补充。"},
+        {"name": "wait-what", "purpose": "已安装，公开用途待补充。"},
+        {"name": "wizard", "purpose": "已安装，公开用途待补充。"},
+        {"name": "writing-for-agents", "purpose": "已安装，公开用途待补充。"}
       ]
     }
   ],
   "plugins": [
     {"name": "browser", "capability": "控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。"},
     {"name": "computer-use", "capability": "通过 Computer Use 操作 macOS 桌面应用。"},
+    {"name": "record-and-replay", "capability": "录制并重放 macOS 操作流程，用于生成可复用自动化。"},
     {"name": "context-mode", "capability": "压缩高输出命令、文件和页面内容，仅把检索或分析结果带入会话。"},
     {"name": "context7", "capability": "查询版本相关的库文档与代码示例。"},
+    {"name": "nowledge-mem", "capability": "提供跨工具的工作记忆、检索、任务保存与知识沉淀。"},
     {"name": "documents", "capability": "创建、编辑和验证 Word/Google Docs 文档。"},
     {"name": "pdf", "capability": "读取、创建、渲染并验证 PDF。"},
     {"name": "presentations", "capability": "创建、编辑、渲染和导出演示文稿。"},
@@ -101,6 +111,7 @@
     {"name": "visualize", "capability": "创建交互式图表、地图、图示、模拟器和数据探索器。"},
     {"name": "codex-security", "capability": "安全扫描、攻击路径分析、验证与漏洞报告工作流。"},
     {"name": "app-69ef18c674308191a2f952431f91ea61", "capability": "Upstash 发布的 Context7 应用连接器缓存包。", "display": "`app-69ef18c674308191a2f952431f91ea61`（Context7）"},
+    {"name": "dev-6a7185f70da88191ac274b67d3a6bd57", "capability": "用途待补充。"},
     {"name": "data-analytics", "capability": "产品和业务数据分析、KPI、报告与仪表盘。"},
     {"name": "figma", "capability": "Figma 设计实现、Code Connect 与设计系统工作流。"},
     {"name": "github", "capability": "仓库、PR、issue、CI 与发布协作。"},
@@ -125,7 +136,7 @@
     {"category": "工具链管理", "display": "`mise`", "commands": ["mise"]},
     {"category": "Agent 编程 CLI", "display": "`codex`", "commands": ["codex"]},
     {"category": "Agent 编程 CLI", "display": "`opencode`", "commands": ["opencode"]},
-    {"category": "Agent 编程 CLI", "display": "`hermes`", "commands": ["hermes"]},
+    {"category": "Agent 编程 CLI", "display": "`grok`", "commands": ["grok"]},
     {"category": "Agent 命令代理", "display": "`rtk`", "commands": ["rtk"]},
     {"category": "文本搜索", "display": "`ripgrep` (`rg`)", "commands": ["rg"]},
     {"category": "AST 搜索/改写", "display": "`ast-grep` / `sg`", "commands": ["ast-grep"]},

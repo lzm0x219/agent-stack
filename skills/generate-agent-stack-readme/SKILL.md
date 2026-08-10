@@ -1,6 +1,6 @@
 ---
 name: generate-agent-stack-readme
-description: 仅在用户显式调用时，盘点 agent-stack 当前本机的 Codex、Hermes 等 Agent 运行时及其活动 Skills，读取配置中的非敏感事实，更新 snapshot/ 并生成完整 README.md。适用于刷新 Agent CLI、Skills、Codex 插件、MCP 服务、本地工具链、全局工作规范和快照日期，或在环境变化后同步仓库快照与 README。
+description: 仅在用户显式调用时，盘点 agent-stack 当前本机的 Codex、Grok 等 Agent 运行时及其活动 Skills，读取配置中的非敏感事实，更新 snapshot/ 并生成完整 README.md。适用于刷新 Agent CLI、Skills、Codex 插件、MCP 服务、本地工具链、全局工作规范和快照日期，或在环境变化后同步仓库快照与 README。
 ---
 
 # 刷新 Agent Stack 快照与 README
@@ -31,14 +31,15 @@ description: 仅在用户显式调用时，盘点 agent-stack 当前本机的 Co
 - 对未由 lock 管理的本地 Skill，记录脱敏后的 `~/...` 路径，并计算按相对路径排序的文件 SHA-256 树摘要。
 - 不读取第三方 Skill 的自由文本来推导用途、质量或上游归属；展示名称和用途优先沿用 `snapshot/catalog.json`。
 
-### Hermes Agent 与活动 Skills
+### 其他 Agent 运行时与活动 Skills
 
-- 从 `snapshot/catalog.json` 的 `agentRuntimes` 读取 Hermes 的命令、活动 Skills 根目录和快照文件。
-- 使用 `command -v hermes` 与 `hermes --version` 记录当前生效的版本、构建号、上游修订、安装方式和脱敏后的安装目录。
-- 只统计 `~/.hermes/skills` 下当前活动的 `SKILL.md`，按 Skill 名称去重，并按相对路径首段分组；根级 Skill 归入 `root`。
-- 不把 `~/.hermes/hermes-agent/skills`、`optional-skills`、`node_modules`、`venv` 或插件源码树中的 bundled Skills 计为活动 Skills，避免与 `~/.hermes/skills` 重复。
+- 从 `snapshot/catalog.json` 的 `agentRuntimes` 读取各运行时的命令、活动 Skills 根目录和快照文件，不把旧快照中的运行时当作仍然活动。
+- 使用当前 shell 的 `command -v` 与对应的 `--version` 记录当前生效的公开版本、修订、安装方式和脱敏后的安装目录；字段以该运行时实际能够确认的公开元数据为准。
+- 只统计 catalog 所列活动 Skills 根目录下的 `SKILL.md`，按 Skill 名称去重，并按相对路径首段分组；根级 Skill 归入 `root`。
+- 不把运行时自带的 bundled Skills、插件缓存、源码树、`optional-skills`、`node_modules` 或 `venv` 计为活动 Skills，避免与活动目录重复。
 - 为每个活动 Skill 记录名称、分类、脱敏路径和按相对路径排序的文件 SHA-256 树摘要，不读取自由文本推导用途。
-- 将 Hermes Skills 与 Codex 个人 Skills 分开统计和展示，不合并数量。
+- 将各运行时的活动 Skills 与 Codex 个人 Skills 分开统计和展示，不合并数量。
+- 如果用户确认某个已登记运行时已被移除，删除其 catalog 条目、工具清单项和过期 Skills 快照，再以仍然活动的运行时重建结构化快照；不得沿用已移除运行时的旧版本或数量。
 
 ### Codex 插件
 
@@ -77,12 +78,12 @@ description: 仅在用户显式调用时，盘点 agent-stack 当前本机的 Co
 先完成完整盘点，再修改 `snapshot/`：
 
 1. 重新生成 `snapshot/skills.json`，保持现有 schema、稳定排序和哈希语义。
-2. 重新生成 `snapshot/hermes-skills.json`，记录 Hermes 运行时公开版本元数据和全部活动 Skills 的稳定清单与树摘要。
+2. 为 catalog 中声明了 `skillsSnapshot` 的其他 Agent 运行时重新生成对应快照，记录公开版本元数据和全部活动 Skills 的稳定清单与树摘要。
 3. 仅在 Agent 运行时、名称、分组、展示名称或公开用途确实变化时更新 `snapshot/catalog.json`；未变化条目保持原有措辞和顺序。
 4. 将各 Agent 运行时、插件版本与状态、MCP 状态、工具版本、快照日期和全局规范哈希写入 `snapshot/environment.json`，至少包含：
    - `schemaVersion`、`snapshotDate` 和 `timezone`；
-   - Codex 个人 Skills、Hermes 活动 Skills、插件包、已启用插件和 MCP 服务数量；
-   - Hermes 的命令、版本、构建号、上游修订、安装方式、脱敏路径和 Skills 根目录；
+   - Codex 个人 Skills、其他运行时活动 Skills、插件包、已启用插件和 MCP 服务数量；
+   - 各 Agent 运行时的命令、公开版本元数据、安装方式、脱敏路径和 Skills 根目录；
    - 插件的名称、版本、来源类别、缓存和启用状态；
    - MCP 服务的名称、启用状态和公开用途；
    - 工具命令、版本或读取失败状态；
@@ -99,7 +100,7 @@ description: 仅在用户显式调用时，盘点 agent-stack 当前本机的 Co
 1. 标题、仓库定位和快照摘要。
 2. 状态边界与环境结构。
 3. 按场景分组的 Codex 个人 Skills。
-4. Hermes Agent 版本、活动 Skills 数量、分类摘要与完整快照链接。
+4. 其他 Agent 运行时版本、活动 Skills 数量、分类摘要与完整快照链接。
 5. 显式启用与仅缓存的 Codex 插件。
 6. MCP 服务及其非敏感用途。
 7. 本地工具链概览与高价值使用说明。
@@ -115,7 +116,7 @@ description: 仅在用户显式调用时，盘点 agent-stack 当前本机的 Co
 更新后至少完成以下检查：
 
 - 再次运行 `./scripts/check-snapshot.sh`，确认通过。
-- 确认 Hermes CLI 版本、活动 Skills 数量、名称、路径和哈希与 `~/.hermes/skills` 一致，并确认 bundled/optional Skills 未混入。
+- 确认各 Agent CLI 版本、活动 Skills 数量、名称、路径和哈希与 catalog 所列活动目录一致，并确认 bundled、插件缓存或其他非活动 Skills 未混入。
 - 确认 README 的数量、版本、状态、来源、日期和哈希与结构化快照一致。
 - 确认标题层级、表格列数、代码围栏、HTML 折叠区块和本地链接正确。
 - 确认差异不含绝对主目录、敏感配置值、无关改动或意外格式化。
