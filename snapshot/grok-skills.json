@@ -6,8 +6,8 @@
   ],
   "runtime": {
     "command": "grok",
-    "version": "1.0.0",
-    "revision": "3cd0d0cbcebe",
+    "version": "1.0.13",
+    "revision": "5e9a58528b76",
     "installDirectory": "~/.grok",
     "installMethod": "user-local symlink",
     "skillsRoot": "~/.grok/skills"
@@ -18,7 +18,7 @@
       "name": "archify",
       "category": "root",
       "skillPath": "~/.grok/skills/archify/SKILL.md",
-      "contentHash": "22a8d3b33c3ab1bfbae2477d157826b3de5251f7f2c0d856b2b66679d60c4cf9",
+      "contentHash": "1d312c482648d835c2d0635c3e26da597b7f55fe78b604f781109fefb7eb2dae",
       "hashSource": "local-tree-sha256"
     },
     {

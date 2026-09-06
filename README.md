@@ -1,12 +1,12 @@
 # Agent Stack
 
-个人 Agent 工程环境的能力索引与配置快照，覆盖 Codex、OpenCode、Grok 等 Agent 运行时、活动 Skills、Codex 插件、模型上下文协议（Model Context Protocol，MCP）服务、命令行工具和全局工作规范。
+个人 Agent 工程环境的能力索引与配置快照，覆盖 Codex、OpenCode、Grok、Hermes 等 Agent 运行时、活动 Skills、Codex 插件、模型上下文协议（Model Context Protocol，MCP）服务、命令行工具和全局工作规范。
 
 这是脱敏的只读快照，不是一键安装配置；公开内容可用于理解环境结构和工具选型，但不能直接重建本机环境。
 
-| 快照日期 | Codex 个人 Skills | Grok Skills | 插件包 | 已启用插件 | MCP 服务 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| 2026-08-10 | 51 | 3 | 24 | 14 | 7 |
+| 快照日期 | Codex 个人 Skills | Grok Skills | 插件包 | 已启用插件 | MCP 服务 | Hermes Skills |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 2026-09-07 | 56 | 3 | 29 | 17 | 7 | 84 |
 
 > [!NOTE]
 > 盘点时区为 Asia/Shanghai。本文只记录配置结构、工具名称和版本，不记录令牌、密钥、服务地址参数或其他敏感值。
@@ -29,9 +29,9 @@
 | 层级 | 位置 | 内容 |
 | --- | --- | --- |
 | 全局规范 | `~/.codex/AGENTS.md` | 指令优先级、工具路由、安全审查和验证方式 |
-| Codex 个人 Skills | `~/.agents/skills`、`~/.codex/skills` | 51 个个人 Skills |
-| 其他 Agent 运行时 | `opencode`、`~/.local/bin/grok`、`~/.grok/skills` | OpenCode 与 Grok CLI；Grok 有 3 个活动 Skills |
-| 插件与 MCP | `~/.codex/plugins`、`~/.codex/config.toml` | 24 个插件包与 7 个 MCP 服务入口 |
+| Codex 个人 Skills | `~/.agents/skills`、`~/.codex/skills` | 56 个个人 Skills |
+| 其他 Agent 运行时 | `opencode`、`grok`、`hermes` | Grok 有 3 个、Hermes 有 84 个活动 Skills |
+| 插件与 MCP | `~/.codex/plugins`、`~/.codex/config.toml` | 29 个插件包与 7 个 MCP 服务入口 |
 | 本地工具链 | 当前 shell 的 `PATH` | 搜索、代码分析、安全扫描、运行时和协作工具 |
 
 本文严格区分以下四种状态：
@@ -45,11 +45,11 @@
 
 “已缓存”不等于“已启用”，“配置中已登记”也不等于工具已暴露给当前会话。
 
-动态数量、Agent 版本、插件版本与状态、MCP 状态、工具版本和全局规范哈希记录在 [`snapshot/environment.json`](snapshot/environment.json)；Codex 个人 Skills 来源与内容摘要记录在 [`snapshot/skills.json`](snapshot/skills.json)，Grok 活动 Skills 清单记录在 [`snapshot/grok-skills.json`](snapshot/grok-skills.json)，稳定分组与用途记录在 [`snapshot/catalog.json`](snapshot/catalog.json)。
+动态数量、Agent 版本、插件版本与状态、MCP 状态、工具版本和全局规范哈希记录在 [`snapshot/environment.json`](snapshot/environment.json)；Codex 个人 Skills 来源与内容摘要记录在 [`snapshot/skills.json`](snapshot/skills.json)，Grok 与 Hermes 活动 Skills 清单分别记录在 [`snapshot/grok-skills.json`](snapshot/grok-skills.json) 和 [`snapshot/hermes-skills.json`](snapshot/hermes-skills.json)，稳定分组与用途记录在 [`snapshot/catalog.json`](snapshot/catalog.json)。
 
 ## Codex 个人 Skills
 
-本机共有 51 个 Codex 个人 skill。以下清单按使用场景分组，不包含 Codex 系统 skills、插件内部 skills 或 Grok 活动 skills，也不重复计算跨目录安装。
+本机共有 56 个 Codex 个人 skill。以下清单按使用场景分组，不包含 Codex 系统 skills、插件内部 skills 或 Grok、Hermes 活动 skills，也不重复计算跨目录安装。
 
 ### 工程工作流 Skills
 
@@ -116,37 +116,43 @@
 | `scaffold-exercises` | 本地目录 `~/.codex/skills/scaffold-exercises` | 已安装，公开用途待补充。 |
 | `setup-pre-commit` | 本地目录 `~/.codex/skills/setup-pre-commit` | 已安装，公开用途待补充。 |
 | `skillopt-sleep` | 本地目录 `~/.codex/skills/skillopt-sleep` | 已安装，公开用途待补充。 |
-| `to-questionnaire` | 本地目录 `~/.codex/skills/to-questionnaire` | 已安装，公开用途待补充。 |
+| `to-questionnaire` | [`mattpocock/skills`](https://github.com/mattpocock/skills) | 已安装，公开用途待补充。 |
 | `tsdown` | [`antfu/skills`](https://github.com/antfu/skills) | 已安装，公开用途待补充。 |
 | `turborepo` | [`antfu/skills`](https://github.com/antfu/skills) | 已安装，公开用途待补充。 |
 | `typescript-advanced-types` | 本地目录 `~/.agents/skills/typescript-advanced-types` | 已安装，公开用途待补充。 |
 | `typescript-pro` | 本地目录 `~/.agents/skills/typescript-pro` | 已安装，公开用途待补充。 |
 | `vite` | [`antfu/skills`](https://github.com/antfu/skills) | 已安装，公开用途待补充。 |
 | `vitest` | [`antfu/skills`](https://github.com/antfu/skills) | 已安装，公开用途待补充。 |
-| `wait-what` | 本地目录 `~/.codex/skills/wait-what` | 已安装，公开用途待补充。 |
-| `wizard` | 本地目录 `~/.codex/skills/wizard` | 已安装，公开用途待补充。 |
-| `writing-for-agents` | 本地目录 `~/.codex/skills/writing-for-agents` | 已安装，公开用途待补充。 |
+| `wait-what` | [`mattpocock/skills`](https://github.com/mattpocock/skills) | 已安装，公开用途待补充。 |
+| `wizard` | [`mattpocock/skills`](https://github.com/mattpocock/skills) | 已安装，公开用途待补充。 |
+| `writing-for-agents` | [`mattpocock/skills`](https://github.com/mattpocock/skills) | 已安装，公开用途待补充。 |
+| `bootstrap-project` | [`lzm0x219/skills`](https://github.com/lzm0x219/skills) | 已安装，公开用途待补充。 |
+| `durable-execution-state` | 本地目录 `~/.codex/skills/durable-execution-state` | 已安装，公开用途待补充。 |
+| `ecommerce-helper` | 本地目录 `~/.codex/skills/ecommerce-helper` | 已安装，公开用途待补充。 |
+| `ip-as-logo` | [`s1dashu/ip-as-logo-skill`](https://github.com/s1dashu/ip-as-logo-skill) | 已安装，公开用途待补充。 |
+| `zig` | [`lzm0x219/skills`](https://github.com/lzm0x219/skills) | 已安装，公开用途待补充。 |
 
 ### Skills 内容摘要
 
-安装内容证据记录在 [`snapshot/skills.json`](snapshot/skills.json)：35 个 lock 管理的 Skills 保存 lock 中的 `skillFolderHash`、来源标识和上游路径；16 个本地 Skills 保存按相对路径排序后的文件 SHA-256 树摘要。`skillFolderHash` 不代表上游 Git commit，也不能单独证明本地目录未被修改。
+安装内容证据记录在 [`snapshot/skills.json`](snapshot/skills.json)：42 个 lock 管理的 Skills 保存 lock 中的 `skillFolderHash`、来源标识和上游路径；14 个本地 Skills 保存按相对路径排序后的文件 SHA-256 树摘要。`skillFolderHash` 不代表上游 Git commit，也不能单独证明本地目录未被修改。
 
 ## 其他 Agent 运行时
 
-Codex 之外，当前 shell 还解析到 OpenCode 与 Grok CLI。运行时版本与活动 Skills 分开记录：
+Codex 之外，当前 shell 还解析到 OpenCode、Grok CLI 与 Hermes Agent。运行时版本与活动 Skills 分开记录：
 
 | 运行时 | 命令 | 版本 | 活动 Skills | 快照 |
 | --- | --- | --- | ---: | --- |
-| OpenCode | `opencode` | 1.18.15 | 0 | — |
-| Grok CLI | `grok` | 1.0.0 | 3 | [`snapshot/grok-skills.json`](snapshot/grok-skills.json) |
+| OpenCode | `opencode` | 1.18.29 | 未登记根目录 | — |
+| Grok CLI | `grok` | 1.0.13 | 3 | [`snapshot/grok-skills.json`](snapshot/grok-skills.json) |
+| Hermes Agent | `hermes` | 0.20.5 | 84 | [`snapshot/hermes-skills.json`](snapshot/hermes-skills.json) |
 
 ### Grok CLI 与活动 Skills
 
 | 字段 | 值 |
 | --- | --- |
 | 命令 | `grok` |
-| 版本 | 1.0.0 |
-| 修订 | `3cd0d0cbcebe` |
+| 版本 | 1.0.13 |
+| 修订 | `5e9a58528b76` |
 | 安装方式 | user-local symlink |
 | 安装目录 | `~/.grok` |
 | 活动 Skills 根目录 | `~/.grok/skills` |
@@ -154,28 +160,65 @@ Codex 之外，当前 shell 还解析到 OpenCode 与 Grok CLI。运行时版本
 
 只统计 `~/.grok/skills` 中的活动 `SKILL.md`；Grok 自带的 bundled Skills、插件缓存和其他非活动目录不计入。当前 3 个活动 Skill 都位于根级分类：`archify`、`find-skills`、`napi-rs`。名称、脱敏路径和文件树 SHA-256 记录在 [`snapshot/grok-skills.json`](snapshot/grok-skills.json)。
 
+### Hermes Agent 与活动 Skills
+
+| 字段 | 值 |
+| --- | --- |
+| 命令 | `hermes` |
+| 版本 | 0.20.5 |
+| 修订 | `791e2ae3` |
+| 安装方式 | git |
+| 安装目录 | `~/.hermes/hermes-agent` |
+| 活动 Skills 根目录 | `~/.hermes/skills` |
+| 活动 Skills | 84 |
+
+只统计 `~/.hermes/skills` 中的活动 `SKILL.md`，按名称去重；源码树、optional-skills、依赖目录和插件 bundled Skills 不计入。完整名称、脱敏路径和文件树 SHA-256 见 [`snapshot/hermes-skills.json`](snapshot/hermes-skills.json)。
+
+| 分类 | Skills |
+| --- | ---: |
+| `apple` | 4 |
+| `autonomous-ai-agents` | 5 |
+| `creative` | 16 |
+| `devops` | 1 |
+| `email` | 2 |
+| `github` | 7 |
+| `media` | 3 |
+| `mlops` | 5 |
+| `note-taking` | 1 |
+| `productivity` | 17 |
+| `research` | 7 |
+| `root` | 3 |
+| `smart-home` | 1 |
+| `social-media` | 1 |
+| `software-development` | 11 |
+
+命令别名 `agent` 指向同一个 Grok 可执行文件，`hermes-acp` 属于 Hermes 协议入口，均不重复计为独立运行时。`coder` 指向的 Hermes profile 不存在，未计入活动运行时。
+
 ## Codex 插件
 
-插件缓存中共有 24 个包。Codex 配置显式启用了其中 14 个，其余 10 个仅在本机缓存中存在。
+插件缓存中共有 29 个包。Codex 配置显式启用了其中 17 个，其余 12 个仅在本机缓存中存在。
 
 ### 配置中显式启用
 
 | 插件 | 版本 | 能力 |
 | --- | --- | --- |
-| `browser` | 26.803.41515 | 控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。 |
-| `chrome` | 26.803.41515 | 用途待补充。 |
-| `computer-use` | 1.0.1000633 | 通过 Computer Use 操作 macOS 桌面应用。 |
+| `browser` | 26.901.51231 | 控制 Codex 应用内浏览器，适合本地页面导航、交互与截图。 |
+| `chrome` | 26.901.51231 | 用途待补充。 |
+| `codex-app-tools` | 0.1.3 | 用途待补充。 |
+| `computer-use` | 1.0.1000926 | 通过 Computer Use 操作 macOS 桌面应用。 |
 | `context-mode` | 1.0.169 | 压缩高输出命令、文件和页面内容，仅把检索或分析结果带入会话。 |
 | `context7` | 1.0.1 | 查询版本相关的库文档与代码示例。 |
-| `documents` | 26.805.11740 | 创建、编辑和验证 Word/Google Docs 文档。 |
-| `nowledge-mem` | 0.1.30 | 提供跨工具的工作记忆、检索、任务保存与知识沉淀。 |
-| `pdf` | 26.805.11740 | 读取、创建、渲染并验证 PDF。 |
-| `presentations` | 26.805.11740 | 创建、编辑、渲染和导出演示文稿。 |
-| `record-and-replay` | 1.0.1000633 | 录制并重放 macOS 操作流程，用于生成可复用自动化。 |
-| `sites` | 0.1.34 | 构建与托管网站。 |
-| `spreadsheets` | 26.805.11740 | 创建、分析、可视化并导出电子表格。 |
-| `template-creator` | 26.805.11740 | 从文档、演示或表格创建个人制品模板 skill。 |
-| `visualize` | 1.0.20 | 创建交互式图表、地图、图示、模拟器和数据探索器。 |
+| `diagram-design` | 2.6.12 | 用途待补充。 |
+| `documents` | 26.904.11930 | 创建、编辑和验证 Word/Google Docs 文档。 |
+| `nowledge-mem` | 0.1.32 | 提供跨工具的工作记忆、检索、任务保存与知识沉淀。 |
+| `pdf` | 26.904.11930 | 读取、创建、渲染并验证 PDF。 |
+| `presentations` | 26.904.11930 | 创建、编辑、渲染和导出演示文稿。 |
+| `record-and-replay` | 1.0.1000926 | 录制并重放 macOS 操作流程，用于生成可复用自动化。 |
+| `sites` | 0.1.57 | 构建与托管网站。 |
+| `spreadsheets` | 26.904.11930 | 创建、分析、可视化并导出电子表格。 |
+| `template-creator` | 26.904.11930 | 从文档、演示或表格创建个人制品模板 skill。 |
+| `unified-computer-use` | 26.901.51231 | 用途待补充。 |
+| `visualize` | 1.0.29 | 创建交互式图表、地图、图示、模拟器和数据探索器。 |
 
 ### 本机缓存的其他插件
 
@@ -184,15 +227,17 @@ Codex 之外，当前 shell 还解析到 OpenCode 与 Grok CLI。运行时版本
 | 插件 | 版本 | 能力 |
 | --- | --- | --- |
 | `app-69ef18c674308191a2f952431f91ea61`（Context7） | 1.0.0 | Upstash 发布的 Context7 应用连接器缓存包。 |
-| `codex-security` | 0.1.18 | 安全扫描、攻击路径分析、验证与漏洞报告工作流。 |
-| `data-analytics` | 0.2.8-13ceeea1f599 | 产品和业务数据分析、KPI、报告与仪表盘。 |
+| `codex-security` | 0.1.23 | 安全扫描、攻击路径分析、验证与漏洞报告工作流。 |
+| `data-analytics` | 0.2.10-13ceeea1f599 | 产品和业务数据分析、KPI、报告与仪表盘。 |
+| `deep-research-work` | 0.1.14 | 用途待补充。 |
 | `dev-6a7185f70da88191ac274b67d3a6bd57` | 1.0.0 | 用途待补充。 |
 | `expo` | 1.0.2 | 用途待补充。 |
-| `figma` | 2.0.17 | Figma 设计实现、Code Connect 与设计系统工作流。 |
-| `github` | 0.1.8-2841cf9749ae | 仓库、PR、issue、CI 与发布协作。 |
+| `figma` | 2.0.21 | Figma 设计实现、Code Connect 与设计系统工作流。 |
+| `github` | 0.1.12-5f7cd798dc99 | 仓库、PR、issue、CI 与发布协作。 |
 | `hugging-face` | 1.0.0 | 模型、数据集、Spaces、训练任务和研究工作流。 |
 | `openai-developers` | 1.2.3 | OpenAI API、Agents SDK 与 ChatGPT Apps 开发。 |
 | `openai-templates` | 0.1.1 | OpenAI 默认文档、演示和表格模板。 |
+| `plugin-management` | 0.1.0 | 用途待补充。 |
 
 插件来源以快照中的 `source` 字段为准。当前配置显式启用的插件与仅缓存的插件分开列出；插件包存在不代表已启用，也不代表当前会话一定暴露对应工具。
 
@@ -218,15 +263,17 @@ Codex 之外，当前 shell 还解析到 OpenCode 与 Grok CLI。运行时版本
 
 | 类别 | 工具 | 版本/说明 |
 | --- | --- | --- |
-| 工具链管理 | `Homebrew` (`brew`) | 6.0.15-146-g8ea475e |
-| 工具链管理 | `mise` | 2026.8.3 |
-| Agent 编程 CLI | `codex` | 0.147.0-alpha.6.5 |
-| Agent 编程 CLI | `opencode` | 1.18.15 |
-| Agent 编程 CLI | `grok` | 1.0.0 |
-| Agent 命令代理 | `rtk` | 0.45.0 |
+| 工具链管理 | `Homebrew` (`brew`) | 6.0.22-69-g6a16270 |
+| 工具链管理 | `mise` | 2026.9.1 |
+| Agent 编程 CLI | `codex` | 0.153.4 |
+| Agent 编程 CLI | `opencode` | 1.18.29 |
+| Agent 编程 CLI | `grok` | 1.0.13 |
+| Agent 编程 CLI | `hermes` | 0.20.5 |
+| Agent 命令代理 | `rtk` | 0.48.0 |
 | 文本搜索 | `ripgrep` (`rg`) | 15.2.0 |
-| AST 搜索/改写 | `ast-grep` / `sg` | 0.45.1 |
-| 代码关系理解 | `codegraph` | 1.4.1 |
+| 语义搜索 | `zg` | 0.2.1 |
+| AST 搜索/改写 | `ast-grep` / `sg` | 0.45.3 |
+| 代码关系理解 | `codegraph` | 1.6.0 |
 | 安全扫描 | `opengrep` | 1.25.0 |
 | 供应链签名验证 | `cosign` | 无法读取（退出码 1） |
 | 链接检查 | `lychee` | 0.24.2 |
@@ -234,82 +281,93 @@ Codex 之外，当前 shell 还解析到 OpenCode 与 Grok CLI。运行时版本
 | 文件树查看 | `tree` | 2.3.2 |
 | 文件监视 | `watchman` | 2026.07.27.00 |
 | 数据库 CLI | `sqlite3` | 3.51.0 |
-| JavaScript 运行时 | `node` | 24.19.0 |
-| JS 运行时与包管理 | `npm` / `pnpm` / `bun` / `corepack` | 11.17.0 / 11.13.0 / 1.3.14 / 0.35.0 |
-| Java | `java` | 17.0.19 |
-| Rust | `rustc` / `cargo` | 1.97.1 / 1.97.1 |
-| Python | `python3` | 3.14.6 |
-| Python 项目工具 | `uv` | 0.12.3 |
-| Ruby | `ruby` | 4.0.5 |
+| JavaScript 运行时 | `node` | 26.7.0 |
+| JS 运行时与包管理 | `npm` / `pnpm` / `bun` / `corepack` | 11.19.0 / 12.3.4 / 1.4.2 / 0.35.0 |
+| Java | `java` | 17.0.20.1 |
+| Rust | `rustc` / `cargo` | 1.98.1 / 1.98.1 |
+| Python | `python3` | 3.14.7 |
+| Python 项目工具 | `uv` | 0.12.10 |
+| Ruby | `ruby` | 2.6.10p210 |
 | Apple 平台依赖管理 | `CocoaPods` (`pod`) | 1.17.0 |
 | Apple 开发工具链 | `Xcode` / `swift` / `clang` | 无法读取（退出码 64） / 6.3.3 / 21.0.0 |
 | 媒体处理 | `ffmpeg` | 无法读取（退出码 8） |
 | 字体处理 | `fonttools` / `LCDF TypeTools` (`otftotfm`) | 无法读取（退出码 1） / 2.110 |
 | 压缩工具 | `gzip` | 1.14 |
-| macOS 维护 | `mole` | 1.49.2 |
+| macOS 维护 | `mole` | 1.53.0 |
 | Shell | `zsh` / `starship` | 5.9.2 / 1.26.0 |
 | 版本控制 | `git` | 2.55.0 |
-| GitHub CLI | `gh` | 2.97.0 |
+| GitHub CLI | `gh` | 2.100.0 |
 | 协作者清单 | `all-contributors` | 6.26.1 |
 | 凭据输入 | `pinentry-mac` | 1.3.1.1 |
 
-这些工具的默认路由是：关系理解优先 CodeGraph（仅当仓库已有 `.codegraph/`），结构化搜索和 codemod 使用 ast-grep，普通文本与配置搜索使用 ripgrep，安全相关审查使用 Opengrep，供应链签名验证使用 Cosign，链接检查使用 Lychee。第三方 skill、插件或 MCP 安装前应使用 SkillSpector；当前 shell 未解析到该 CLI，相关安装任务应停止并说明缺口。
+关系理解仅在仓库已有 `.codegraph/` 时优先使用 CodeGraph；已知文本和标识符用 ripgrep，不确定措辞的语义发现用已有且就绪的 `zg` 索引。结构化搜索和 codemod 可用 ast-grep，安全扫描、签名验证和链接检查分别对应 Opengrep、Cosign 与 Lychee。
+
+上表统一记录 `--version` 的读取结果；Cosign、Xcode、FFmpeg 与 fonttools 在该参数下返回非零退出码，不能据此判断工具不可用。
 
 ## 全局 AGENTS.md
 
 ### 规则摘要
 
-- 默认中文，代码、命令、标识符和原始报错保留原文。
-- 输出简洁，并只在专用能力能显著提高正确性或证据质量时使用。
-- shell 命令通过 RTK 路由；仅当仓库已有 `.codegraph/` 时使用 CodeGraph。
+- 默认中文，保留代码、命令、标识符和原始报错；先说结果。
+- 在授权范围内完成工作，遵守只读与等待执行等明确边界；专用能力以改善正确性和证据为准。
+- shell 命令通过 RTK 路由；已有代码索引用 CodeGraph，语义搜索先检查 `zg` 就绪状态。
+- 验证覆盖改动行为与项目必需检查，通过后只因新修改、失败或未解决疑点扩大检查。
 
 ### 完整副本与来源哈希
 
 全局规范位于 `~/.codex/AGENTS.md`。下面是截至快照日期与本机源文件逐字同步的副本；源文件变化后应同时更新本节和哈希。
 
-源文件 SHA-256：`6cf17d58893612115ebcd213186a0e7f484418f853fea5b92a7070117a676093`
+源文件 SHA-256：`374579d0f0a5d7e354601f6250a678b1f93504a1ef8b4b4096f1b106ec085ac2`
 
 <details>
 <summary><strong>展开全局工作规范</strong></summary>
 
 ````md
 # Global Agent Rules
-- 默认中文，代码、命令、标识符和原始报错保留原文。
-- 输出简洁。
+
+- 默认中文，代码、命令、标识符和原始报错保留原文。先说结果，简洁说明必要依据。
+- 用户当前明确要求优先于本文件和 Skill 的默认流程；遵守系统、开发者指令和宿主权限限制。
+- 在已授权范围内完成工作，复用已有授权；仅当缺失信息会实质改变结果且无法合理推断时提问。准备工作可独立推进时继续。
+- 只读、规划、等待“执行”等明确边界持续有效。发送消息、发布、部署、合并、破坏性操作或扩大访问范围，须有覆盖该动作的授权。
+- Skill 导致暂停或偏离请求时，指出文件、原句和适用原因；区分真实授权要求与默认工作流程。
 
 ## Capability routing
 
-- Use specialized tools only when they materially improve correctness or evidence.
-- For version-sensitive APIs, use authoritative versioned documentation.
-- For security work, validate scanner findings against source before reporting them
-  as confirmed vulnerabilities.
+- 仅在专用工具或 Skill 能改善正确性、证据或交付时使用；按任务分支读取 references。
+- 版本敏感的 API 使用匹配版本的权威文档；安全扫描发现经源码验证后才能称为已确认漏洞。
+- 委派须符合当前请求和适用指令，且子任务可独立验收；明确文件责任、共享约束和完成条件。
+- 验证覆盖改动行为和项目必需检查；通过后，仅因新修改、失败或未解决疑点扩大或重复检查。
 
 <!-- rtk-instructions -->
 ## RTK
 
-- Prefix shell commands with `rtk`; in command chains, prefix every segment.
-- Use the raw command only to debug whether RTK filtering caused a problem.
-- Use `rtk proxy <cmd>` to bypass filtering while retaining usage tracking.
-- Consult [`~/.codex/references/rtk.md`](references/rtk.md) only when command
-  discovery or an RTK-specific exception is needed.
+- Shell 命令使用 `rtk` 前缀，命令链每段分别加前缀。
+- 需要原始、完整或可机器解析的输出时使用 `rtk proxy <cmd>`；仅为诊断 RTK 本身的问题直接运行原始命令。
+- 命令发现或 RTK 异常处理时读取 [RTK reference](references/rtk.md)。
 <!-- /rtk-instructions -->
 
 <!-- CODEGRAPH_START -->
 ## CodeGraph
 
-- When the repository root contains `.codegraph/`, use `codegraph_explore` (or
-  `rtk proxy codegraph explore "<question>"`) before grep/find or broad file
-  reads for code-location and call-path questions.
-- Name the relevant file or symbol when current line-numbered source is needed.
-- Without `.codegraph/`, skip CodeGraph; do not create an index implicitly.
+- 仓库根目录存在 `.codegraph/` 时，代码定位或调用路径问题先用 `codegraph_explore` 或 `rtk proxy codegraph explore "<question>"`，再做宽范围文本搜索或读取。
+- 需要当前行号时读取具体文件或符号；没有 `.codegraph/` 则跳过，不隐式创建索引。
 <!-- CODEGRAPH_END -->
+
+<!-- ZVEC_GREP_START -->
+## Workspace search
+
+- 已知文本、标识符、路径、正则和穷尽核验使用 `rg`；机器解析或要求完整输出时用 `rtk proxy rg`。
+- 不确定措辞或位置的语义发现使用已有 `zg` 索引；代码定位与调用路径仍先遵循 CodeGraph 规则。
+- 索引搜索前运行 `rtk zg status --check-ready`；未就绪则回退 `rg`。只在用户要求或任务包含搜索配置时创建或重建索引。
+- 排名结果只作线索，关键结论用当前源码或 `rg` 核验。需要版本特定语法时查 `rtk zg help query`、`index` 或 `models`。
+<!-- ZVEC_GREP_END -->
 ````
 
 </details>
 
 ## 更新环境快照
 
-环境变化后，必须先运行 `./scripts/check-snapshot.sh` 识别数量、动态环境清单、Skills 内容摘要或全局规范摘要的漂移。脚本只读，使用本快照已列出的 `jq` 与系统命令，不安装或引入项目依赖。
+环境变化后，必须先运行 `./scripts/check-snapshot.sh` 识别数量、动态环境清单、Skills 内容摘要或全局规范摘要的漂移。脚本只读，使用本快照已列出的 `jq`、`python3` 与系统命令，不安装或引入项目依赖。
 
 以下只读命令用于人工复核完整环境；检查输出后再更新本文与 `snapshot/`：
 

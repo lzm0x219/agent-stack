@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": [
+    "hermes --version",
+    "~/.hermes/skills"
+  ],
+  "runtime": {
+    "command": "hermes",
+    "version": "0.20.5",
+    "revision": "791e2ae3",
+    "installDirectory": "~/.hermes/hermes-agent",
+    "installMethod": "git",
+    "skillsRoot": "~/.hermes/skills"
+  },
+  "hashSemantics": "同名 Skill 按名称去重；SHA-256 of sorted lines containing each relative path and file SHA-256",
+  "skills": [
+    {
+      "name": "airtable",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/airtable/SKILL.md",
+      "contentHash": "7a409e5ab1a797c3bc5e8f5b948ef6c401b556226af553c1be30125a48ed6387",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "apple-notes",
+      "category": "apple",
+      "skillPath": "~/.hermes/skills/apple/apple-notes/SKILL.md",
+      "contentHash": "a9a191d29075d0a5833d63eeb21f0d265147463b91bc83064cd1f227a8e7c7a5",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "apple-reminders",
+      "category": "apple",
+      "skillPath": "~/.hermes/skills/apple/apple-reminders/SKILL.md",
+      "contentHash": "8d0c176af7d7ec7b745b3d6848602ea94c2741ca4b67fa9ae9a1d96f5e0e9fb8",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "architecture-diagram",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/architecture-diagram/SKILL.md",
+      "contentHash": "de1682209f854d8f0c884e874ee555f005e530dbc3b463404571bec912c7be4e",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "arxiv",
+      "category": "research",
+      "skillPath": "~/.hermes/skills/research/arxiv/SKILL.md",
+      "contentHash": "405a49ae2d7d0daa199c56b104271d528280fb9e3cf657b376f8bd2f7a2cab94",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "ascii-art",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/ascii-art/SKILL.md",
+      "contentHash": "772b70addeac3eaf947b8659ca35c97b350c81480fd0e871086a0ce9c246f65d",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "ascii-video",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/ascii-video/SKILL.md",
+      "contentHash": "e9ad8ef716f011c1a4e727837f9aaa2049ad89ecc8349df26940f6d021293344",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "baoyu-infographic",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/baoyu-infographic/SKILL.md",
+      "contentHash": "2bbaf9d9906e5e3b547c1ff9d0f5c95d222c9ffa90644d8363065174090dd05a",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "blocked-page-recovery",
+      "category": "research",
+      "skillPath": "~/.hermes/skills/research/blocked-page-recovery/SKILL.md",
+      "contentHash": "79ec40124e0bd7175695ba9ce4b6e520d1d874a2ceb2454d0c716290e6102a53",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "blogwatcher",
+      "category": "research",
+      "skillPath": "~/.hermes/skills/research/blogwatcher/SKILL.md",
+      "contentHash": "8b810644cd045a1d00c418f6c6da8519f0e83b2e9a1ebf16869e68e82d2cbfd5",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "bootstrap-project",
+      "category": "root",
+      "skillPath": "~/.hermes/skills/bootstrap-project/SKILL.md",
+      "contentHash": "f4a7a9d425d0df9d4e60ecdb2a340e9d91c25d66f3b225cdb11c1e074412b48c",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "box",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/box/SKILL.md",
+      "contentHash": "89def881598907efc2f65b3ebfb354147ce852bb5e64876460255cac9521f717",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "claude-code",
+      "category": "autonomous-ai-agents",
+      "skillPath": "~/.hermes/skills/autonomous-ai-agents/claude-code/SKILL.md",
+      "contentHash": "6326de9ff5d10a10fbd66220b22b2ef8fe1110efb7b42f9be555ba600dfcbf8a",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "claude-design",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/claude-design/SKILL.md",
+      "contentHash": "37a2963a184f62c7572aba20f278b050bf1a6f858858d82cef80574b8f3ecc88",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "codebase-inspection",
+      "category": "github",
+      "skillPath": "~/.hermes/skills/github/codebase-inspection/SKILL.md",
+      "contentHash": "9021e345c68d0a1e294e5d21c33e5a26c8330b7d58362073f46358a41b114027",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "codex",
+      "category": "autonomous-ai-agents",
+      "skillPath": "~/.hermes/skills/autonomous-ai-agents/codex/SKILL.md",
+      "contentHash": "21ae16adf8f3b0bf2703c7bc462cf9a469e0fe5018fb3605b5ef7bc730307433",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "comfyui",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/comfyui/SKILL.md",
+      "contentHash": "24833ae8b850c32a98a25a48d02b55444192c7b167a050c2931e0fee7ae86c64",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "competitor-news-monitor",
+      "category": "research",
+      "skillPath": "~/.hermes/skills/research/competitor-news-monitor/SKILL.md",
+      "contentHash": "c018199163a61c190e0ca0196c57e0b489f0b0e305ed636318fcef118a6e8eb0",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "computer-use",
+      "category": "autonomous-ai-agents",
+      "skillPath": "~/.hermes/skills/autonomous-ai-agents/computer-use/SKILL.md",
+      "contentHash": "3969afec3492c13808a4b9f27d19b0626ccda34136cd0515c1673a37a672d49f",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "design-md",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/design-md/SKILL.md",
+      "contentHash": "921154b91cb51cc3275d3370259872b193dd0de131581b87194634c6fb6bac3a",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "document-to-action-items",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/document-to-action-items/SKILL.md",
+      "contentHash": "18b90af98ea43620668fb2b2f96d9b29da1ea5531ef0d51a76cefe57cc431ed6",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "docx",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/docx/SKILL.md",
+      "contentHash": "e4a24b61a6d5c8ddd59e6edcb76064fa8551da8070fda8deb1c58025c3c51b52",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "dogfood",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/dogfood/SKILL.md",
+      "contentHash": "279bc52f72df1d1e3cf1e5efc24b8fcb418ab626b41b6343d30f90f304b2a5b2",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "email-inbox-triage",
+      "category": "email",
+      "skillPath": "~/.hermes/skills/email/email-inbox-triage/SKILL.md",
+      "contentHash": "a75434a8aaf13c34b740fdf30c16acbabe8f34bf31acad3d0399578f2141c54d",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "evaluating-llms-harness",
+      "category": "mlops",
+      "skillPath": "~/.hermes/skills/mlops/evaluation/evaluating-llms-harness/SKILL.md",
+      "contentHash": "5095b64ab63c2bbaf046fc69be1231b37ede3e0c41ef09b300e73bc6e1e5e31f",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "excalidraw",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/excalidraw/SKILL.md",
+      "contentHash": "b192bd30b9017238ce575d1c891ce22087a8aa91fd4863b6cd690d1d8fdf2ec6",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "findmy",
+      "category": "apple",
+      "skillPath": "~/.hermes/skills/apple/findmy/SKILL.md",
+      "contentHash": "d2b7471bbf0eabcfc80123612cb60d636492029f7f7b0fc7eb977c05582dac00",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "gif-search",
+      "category": "media",
+      "skillPath": "~/.hermes/skills/media/gif-search/SKILL.md",
+      "contentHash": "a40b4da147de318d66c92266933bfdbc0aa042260d1acbb769c41d8a6b96623f",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "github-auth",
+      "category": "github",
+      "skillPath": "~/.hermes/skills/github/github-auth/SKILL.md",
+      "contentHash": "d63e61a52f8cf539826384919f9d014ea1f3982c8f81e15ceeab4fb6f6f61a4d",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "github-code-review",
+      "category": "github",
+      "skillPath": "~/.hermes/skills/github/github-code-review/SKILL.md",
+      "contentHash": "073e3ceb66bd2de8ec103f693ad31f1d46c9e6dc79cbdaafc0657f5af8107740",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "github-issue-to-pr",
+      "category": "github",
+      "skillPath": "~/.hermes/skills/github/github-issue-to-pr/SKILL.md",
+      "contentHash": "a403fc89fbfa79960487798d46e89631cc2fd68f0db79e105afe4ee4ba19748c",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "github-issues",
+      "category": "github",
+      "skillPath": "~/.hermes/skills/github/github-issues/SKILL.md",
+      "contentHash": "bf044476d10c7a8d5417ef50da50484da453c54a1a157b76d91935749d1c31c2",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "github-pr-workflow",
+      "category": "github",
+      "skillPath": "~/.hermes/skills/github/github-pr-workflow/SKILL.md",
+      "contentHash": "2931afe2832bc13dcf9894466d53d1402d66a4dc0f06077a47c53a1035b6eb2b",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "github-repo-management",
+      "category": "github",
+      "skillPath": "~/.hermes/skills/github/github-repo-management/SKILL.md",
+      "contentHash": "dc3b0df53048709a0b9816cf05aec79af67c318261af7704f483f57269c2f0c2",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "google-workspace",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/google-workspace/SKILL.md",
+      "contentHash": "23181fbda2034fc321be5f58c23ab0cc58bead62278106e2dded6c93b867728a",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "grounded-citations",
+      "category": "research",
+      "skillPath": "~/.hermes/skills/research/grounded-citations/SKILL.md",
+      "contentHash": "0ff1c2c3249f5ab1ab9fa13b594bd0f7fb1d87ec859f420e0b98e0e5cea4897f",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "hermes-agent-skill-authoring",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/hermes-agent-skill-authoring/SKILL.md",
+      "contentHash": "d65a5642f228a4b9aa17bed3a6de9fa4a3d3ec3a080089607db252d5f758d17a",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "himalaya",
+      "category": "email",
+      "skillPath": "~/.hermes/skills/email/himalaya/SKILL.md",
+      "contentHash": "ae72c695a183ea2ef58206c6a99993da8969a4f485a9e3ff8a3a7740f269c88d",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "huggingface-hub",
+      "category": "mlops",
+      "skillPath": "~/.hermes/skills/mlops/huggingface-hub/SKILL.md",
+      "contentHash": "3befe9b983df4f5f9b127116c04ad7d02efc3f514aaf5870feeeb81104eb8b34",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "humanizer",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/humanizer/SKILL.md",
+      "contentHash": "f7e7457b5f825cef6d39bac106475cde5955f39f69a93e405e7e736f51cef88e",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "imessage",
+      "category": "apple",
+      "skillPath": "~/.hermes/skills/apple/imessage/SKILL.md",
+      "contentHash": "630c8653060bfa113f300b8598bef017f1cadba8b45f299e2aaa0ab708b35b0e",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "inspecting-hermes-desktop-dom",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/inspecting-hermes-desktop-dom/SKILL.md",
+      "contentHash": "bd3a93bd73d9ac0becf741db78428554b47c340c9d4911f04dd569333be8d3f9",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "ip-as-logo",
+      "category": "root",
+      "skillPath": "~/.hermes/skills/ip-as-logo/SKILL.md",
+      "contentHash": "11fac24889a2be6230ea2c27d7d7041c0510c97d8977d62b411ef415e48c2923",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "llama-cpp",
+      "category": "mlops",
+      "skillPath": "~/.hermes/skills/mlops/inference/llama-cpp/SKILL.md",
+      "contentHash": "0fca428ee2f6b91149a98a54fb5481b6f70816fc5d6818411262ee61ce4de68b",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "llm-wiki",
+      "category": "research",
+      "skillPath": "~/.hermes/skills/research/llm-wiki/SKILL.md",
+      "contentHash": "6404962a0809b287ead69dc0deb87615b4623572725a9459d06a11327199b97a",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "manim-video",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/manim-video/SKILL.md",
+      "contentHash": "fd0c2b89c6de1730136417ef75a5870294db7f3e8e617b29d8c5d20330ab1576",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "maps",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/maps/SKILL.md",
+      "contentHash": "8abbd611dcfc7ceff685cda7a21a714741012d0600099593d51d2a2f3a8fdb49",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "meeting-action-items",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/meeting-action-items/SKILL.md",
+      "contentHash": "5d13a7cddd710559d6b38d29f9243e144206b1793eae79e9abf011a8493de1e2",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "merge-reconciler",
+      "category": "autonomous-ai-agents",
+      "skillPath": "~/.hermes/skills/autonomous-ai-agents/merge-reconciler/SKILL.md",
+      "contentHash": "7ec429b697db971c0c5b0df7f77913a12146bb2febfa8eeaf9fed6317f53c949",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "nano-pdf",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/nano-pdf/SKILL.md",
+      "contentHash": "be67fe44caf06f224bca12cbbe9b218de509fb981a1537e5346d0dec5f95b856",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "node-inspect-debugger",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/node-inspect-debugger/SKILL.md",
+      "contentHash": "c54668241dd06a6b34adf8911d9de920702b23af85d1dafcaa6f8d0d23177e49",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "notion",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/notion/SKILL.md",
+      "contentHash": "7d58d82f96f06b3ac8ccab7fc9a3735bc7bcaf4c1d4235b331a277dc316265dc",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "obsidian",
+      "category": "note-taking",
+      "skillPath": "~/.hermes/skills/note-taking/obsidian/SKILL.md",
+      "contentHash": "1ea6cc583928db97a45f7c5e853d07034f9ee5f78b44706240c7910755986386",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "ocr-and-documents",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/ocr-and-documents/SKILL.md",
+      "contentHash": "43e50780003da3e3ef12a95e0c99e8fb09432d37f66c9370a8575566025a88a4",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "opencode",
+      "category": "autonomous-ai-agents",
+      "skillPath": "~/.hermes/skills/autonomous-ai-agents/opencode/SKILL.md",
+      "contentHash": "6ca20ea4abef2d94757e7d43aec6acc9ef86db1caa57f864c7bd04536ac41224",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "openhue",
+      "category": "smart-home",
+      "skillPath": "~/.hermes/skills/smart-home/openhue/SKILL.md",
+      "contentHash": "19491c8908d2068257d607d8185f85cf147b7bfa7af9d6ef78fe615b294b43f1",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "p5js",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/p5js/SKILL.md",
+      "contentHash": "f0a64c4f27e8a492566228fcf83220acf86cbe7b955f160ae7054cb2b9b58964",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "pdf",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/pdf/SKILL.md",
+      "contentHash": "93002b669f2f2b7645dcbe5d7dcbfd7a39aa8bfa523b4a631a7fd744645cb860",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "plan",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/plan/SKILL.md",
+      "contentHash": "ec8054a1799bcc4ab54273ce6119cc7d9de87532be0efd61075d9fc281e8ff66",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "popular-web-designs",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/popular-web-designs/SKILL.md",
+      "contentHash": "95902df16b6a5e749ee2eed6e1325ed98fbdb5c161bafbd401358401948051e9",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "powerpoint",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/powerpoint/SKILL.md",
+      "contentHash": "59e03455e944a2f127023ff864b270f3bb8e35df5315fd64ab087ba25c9ba4c7",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "pretext",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/pretext/SKILL.md",
+      "contentHash": "99708b5e6ee5038232eb3c67dc2ee829869488dff664ae86ffc8f92690dc5bcd",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "product-price-monitor",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/product-price-monitor/SKILL.md",
+      "contentHash": "9206295c7715904e2c0e4aa50ca69fd66d611084bbfeec77b3504e8b330b61c5",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "python-debugpy",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/python-debugpy/SKILL.md",
+      "contentHash": "c255e3c0b78262e4a77b1db806627718ba7efbd9709d21f4488aaa5ae0c9647b",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "requesting-code-review",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/requesting-code-review/SKILL.md",
+      "contentHash": "36827f1ea96afb9d42abef341c3788f57c393c76727ee98c116c4932eefc8124",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "research-paper-writing",
+      "category": "research",
+      "skillPath": "~/.hermes/skills/research/research-paper-writing/SKILL.md",
+      "contentHash": "7168ab3e41af6a5c6b6e0388672d1f68b722a7f1f510cfc478a8d8959037f5cd",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "sdlc-review",
+      "category": "devops",
+      "skillPath": "~/.hermes/skills/devops/sdlc-review/SKILL.md",
+      "contentHash": "225d9505f765d626b3625a52c12cb897569e60976a688d8302263e8bf66bd609",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "serving-llms-vllm",
+      "category": "mlops",
+      "skillPath": "~/.hermes/skills/mlops/inference/serving-llms-vllm/SKILL.md",
+      "contentHash": "8dcb7d994c1fb9629664a211b9f2f3a6636f3c9d28302098a359641166855935",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "session-librarian",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/session-librarian/SKILL.md",
+      "contentHash": "cfffdaddbf50f1f5ce4696989272d82cc1f06bc633828dadfd521bf02ca9be66",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "simplify-code",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/simplify-code/SKILL.md",
+      "contentHash": "499a837c151368224d593e050b3e52482cb3369290d510d7672df322546e70af",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "sketch",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/sketch/SKILL.md",
+      "contentHash": "aef3db634deaed896e2fd01c60c7fdd47120dc07d559827dc5181741d9c70adb",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "songsee",
+      "category": "media",
+      "skillPath": "~/.hermes/skills/media/songsee/SKILL.md",
+      "contentHash": "ac0407b0b2f81105a6b1862911d2a4d4fdac6ac7be3894457451deaa636a9b63",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "songwriting-and-ai-music",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/songwriting-and-ai-music/SKILL.md",
+      "contentHash": "acc8ac74f6fae585255b4b9a4b684ffbd3dc5a953fa5a37f7ef4583aa7f0ddca",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "spike",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/spike/SKILL.md",
+      "contentHash": "28d9c16bd30d573fe42b1df7df7a1da701c090e36dc2762dd96f6fdcea245d9c",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "systematic-debugging",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/systematic-debugging/SKILL.md",
+      "contentHash": "9e0ae3df04f498294dda6bdbdf4fa1b34d1c81f823289795c18646539c7bbb56",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "teams-meeting-pipeline",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/teams-meeting-pipeline/SKILL.md",
+      "contentHash": "d9dc0c9c1324c05129f7ceaba38c8a9883c28f67528a43a828672f26ee117f16",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "test-driven-development",
+      "category": "software-development",
+      "skillPath": "~/.hermes/skills/software-development/test-driven-development/SKILL.md",
+      "contentHash": "0185a4b1b63eccb7e7f1324f0446b5ad85d9130212a4c1ac2c3186786da63bb2",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "touchdesigner-mcp",
+      "category": "creative",
+      "skillPath": "~/.hermes/skills/creative/touchdesigner-mcp/SKILL.md",
+      "contentHash": "61d176cab27218b6ab517bd3e14cba8f2d4449f9a7c78a663b911b9e7c57c96a",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "weekly-review-planning",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/weekly-review-planning/SKILL.md",
+      "contentHash": "87e945d5207b5a12780f37ef1691b117bd27bce0a30a4d73cfc8c631c711b4d6",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "weights-and-biases",
+      "category": "mlops",
+      "skillPath": "~/.hermes/skills/mlops/evaluation/weights-and-biases/SKILL.md",
+      "contentHash": "f5247cd203ad4e7bc10964d2d84afe758861e9f1009ea4a60395faac5b307f28",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "xlsx",
+      "category": "productivity",
+      "skillPath": "~/.hermes/skills/productivity/xlsx/SKILL.md",
+      "contentHash": "00cda54d45141a6ab9410163b6cf6de67eb093198588769e4fbbbf8d1d99bb93",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "xurl",
+      "category": "social-media",
+      "skillPath": "~/.hermes/skills/social-media/xurl/SKILL.md",
+      "contentHash": "eb95f1156ce9bbdb0998abf148b3b5da97373c02a50c1ceaa20246ad8dca5725",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "youtube-content",
+      "category": "media",
+      "skillPath": "~/.hermes/skills/media/youtube-content/SKILL.md",
+      "contentHash": "d782e9f996e6aa75f5ec7d3a8d9bc8d572906cbccc5bac20017ad01148c6b752",
+      "hashSource": "local-tree-sha256"
+    },
+    {
+      "name": "zig",
+      "category": "root",
+      "skillPath": "~/.hermes/skills/zig/SKILL.md",
+      "contentHash": "375d56fdb8f32b0ddd5f3e5031f9ab9d10b6f287ea74c164724e390e8445241e",
+      "hashSource": "local-tree-sha256"
+    }
+  ]
+}

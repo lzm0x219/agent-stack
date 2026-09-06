@@ -15,6 +15,12 @@
       "command": "grok",
       "skillsRoots": ["~/.grok/skills"],
       "skillsSnapshot": "snapshot/grok-skills.json"
+    },
+    {
+      "name": "Hermes Agent",
+      "command": "hermes",
+      "skillsRoots": ["~/.hermes/skills"],
+      "skillsSnapshot": "snapshot/hermes-skills.json"
     }
   ],
   "skillGroups": [
@@ -91,7 +97,12 @@
         {"name": "vitest", "purpose": "已安装，公开用途待补充。"},
         {"name": "wait-what", "purpose": "已安装，公开用途待补充。"},
         {"name": "wizard", "purpose": "已安装，公开用途待补充。"},
-        {"name": "writing-for-agents", "purpose": "已安装，公开用途待补充。"}
+        {"name": "writing-for-agents", "purpose": "已安装，公开用途待补充。"},
+        {"name": "bootstrap-project", "purpose": "已安装，公开用途待补充。"},
+        {"name": "durable-execution-state", "purpose": "已安装，公开用途待补充。"},
+        {"name": "ecommerce-helper", "purpose": "已安装，公开用途待补充。"},
+        {"name": "ip-as-logo", "purpose": "已安装，公开用途待补充。"},
+        {"name": "zig", "purpose": "已安装，公开用途待补充。"}
       ]
     }
   ],
@@ -119,7 +130,12 @@
     {"name": "openai-developers", "capability": "OpenAI API、Agents SDK 与 ChatGPT Apps 开发。"},
     {"name": "openai-templates", "capability": "OpenAI 默认文档、演示和表格模板。"},
     {"name": "chrome", "capability": "用途待补充。"},
-    {"name": "expo", "capability": "用途待补充。"}
+    {"name": "expo", "capability": "用途待补充。"},
+    {"name": "codex-app-tools", "capability": "用途待补充。"},
+    {"name": "deep-research-work", "capability": "用途待补充。"},
+    {"name": "diagram-design", "capability": "用途待补充。"},
+    {"name": "plugin-management", "capability": "用途待补充。"},
+    {"name": "unified-computer-use", "capability": "用途待补充。"}
   ],
   "mcpPurposes": {
     "codegraph": "为已有 `.codegraph/` 索引的仓库提供符号关系与调用路径查询。",
@@ -137,8 +153,10 @@
     {"category": "Agent 编程 CLI", "display": "`codex`", "commands": ["codex"]},
     {"category": "Agent 编程 CLI", "display": "`opencode`", "commands": ["opencode"]},
     {"category": "Agent 编程 CLI", "display": "`grok`", "commands": ["grok"]},
+    {"category": "Agent 编程 CLI", "display": "`hermes`", "commands": ["hermes"]},
     {"category": "Agent 命令代理", "display": "`rtk`", "commands": ["rtk"]},
     {"category": "文本搜索", "display": "`ripgrep` (`rg`)", "commands": ["rg"]},
+    {"category": "语义搜索", "display": "`zg`", "commands": ["zg"]},
     {"category": "AST 搜索/改写", "display": "`ast-grep` / `sg`", "commands": ["ast-grep"]},
     {"category": "代码关系理解", "display": "`codegraph`", "commands": ["codegraph"]},
     {"category": "安全扫描", "display": "`opengrep`", "commands": ["opengrep"]},

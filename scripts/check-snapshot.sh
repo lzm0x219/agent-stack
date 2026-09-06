@@ -49,7 +49,7 @@ local_skill_display_path() {
   fi
 }
 
-for command_name in awk cmp comm find grok jq mktemp shasum sort tr wc; do
+for command_name in awk cmp comm find grok jq mktemp python3 shasum sort tr wc; do
   if ! command -v "$command_name" >/dev/null 2>&1; then
     printf 'missing required command: %s\n' "$command_name" >&2
     exit 1
@@ -100,6 +100,7 @@ if ! jq -e '
     and (.counts.agentRuntimes | type == "number")
     and (.counts.codexPersonalSkills | type == "number")
     and (.counts.grokSkills | type == "number")
+    and (.counts.hermesSkills | type == "number")
     and (.counts.pluginPackages | type == "number")
     and (.counts.enabledPlugins | type == "number")
     and (.counts.mcpServices | type == "number")
@@ -196,7 +197,8 @@ if ! jq -e \
       and ([ $environment[0].tools[].command ] | index($runtime.command) != null)
       and ((has("skillsRoots") | not) or (.skillsRoots | type == "array"))
       and ((has("skillsSnapshot") | not) or (.skillsSnapshot | type == "string"))))
-  and ([.agentRuntimes[].command] | index("hermes") == null)
+  and ([.agentRuntimes[] | select(.command == "hermes")][0].skillsRoots == ["~/.hermes/skills"])
+  and ([.agentRuntimes[] | select(.command == "hermes")][0].skillsSnapshot == "snapshot/hermes-skills.json")
   and ([.agentRuntimes[] | select(.command == "grok")][0].skillsRoots == ["~/.grok/skills"])
   and ([.agentRuntimes[] | select(.command == "grok")][0].skillsSnapshot == "snapshot/grok-skills.json")
   and ([.agentRuntimes[] | {name, command, skillsRoots: (.skillsRoots // []), skillsSnapshot: (.skillsSnapshot // null)}]
@@ -379,7 +381,7 @@ render_grok_skills_snapshot() {
   version_output="$(grok --version)"
   first_line="$(printf '%s\n' "$version_output" | awk 'NR == 1 { print; exit }')"
 
-  if [[ ! "$first_line" =~ ^grok[[:space:]]+([^[:space:]]+)[[:space:]]+\(([0-9a-f]+)\)$ ]]; then
+  if [[ ! "$first_line" =~ ^grok[[:space:]]+([^[:space:]]+)[[:space:]]+\(([0-9a-f]+)\)([[:space:]]+\[[a-z]+\])?$ ]]; then
     printf 'could not parse Grok version output\n' >&2
     return 1
   fi
@@ -604,5 +606,7 @@ if [ "$failures" -ne 0 ]; then
   printf 'Snapshot consistency check failed with %s issue(s).\n' "$failures" >&2
   exit 1
 fi
+
+python3 "$repo_root/scripts/check-runtime-snapshots.py"
 
 printf 'Snapshot consistency check passed.\n'
